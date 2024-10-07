@@ -55,12 +55,12 @@ color:
 
 ### BASIC COLORS
 
-- id: red # F44336               RGB (244, 67, 54)             
+- id: red # F44336      RGB (244, 67, 54)
   red: 0.957
   green: 0.263
   blue: 0.212
   white: 0.0
-  
+
 
 ### STATE COLORS
 
