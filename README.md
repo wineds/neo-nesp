@@ -20,4 +20,4 @@ Hardware device https://www.waveshare.com/esp32-s3-touch-lcd-2.1.htm (I used the
 
 ## Special Thanks
 
-* velijv for [original project](https://github.com/velijv/nesp/)
+* velijv for [original project](https://github.com/velijv/nesp/) and kancelott for the fork rewrite.
