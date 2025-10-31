@@ -21,36 +21,36 @@ font:
           "\U000F0717", # mdi:snowflake
           "\U000F1A79", # mdi:sun-snowflake-variant
           "\U000F0210", # mdi:fan
-          "\U000F171D", # mdi:fan-auto
-          "\U000F1472", # mdi:fan-speed-1
-          "\U000F1473", # mdi:fan-speed-2
-          "\U000F1474", # mdi:fan-speed-3
-          "\U000F032A", # mdi:leaf
-          "\U000F04B9", # mdi:sofa
-          "\U000F14DE", # mdi:rocket-launch
-          "\U000F0D80", # mdi:home-floor-1
-          "\U000F0D81", # mdi:home-floor-2
-          "\U000F004D", # mdi:arrow-left
-          "\U000F09DF", # mdi:circle-small
-          "\U000F0E03", # mdi:thermometer-chevron-up
-          "\U000F0E02", # mdi:thermometer-chevron-down
-          "\U000F0594", # mdi:weather-night (clear)
-          "\U000F0590", # mdi:weather-cloudy (cloudy)
-          "\U000F0898", # mdi:weather-hurricane (cyclone, tropical_cyclone)
-          "\U000F0F30", # mdi:weather-hazy (dust, dusty, haze, hazy)
-          "\U000F0591", # mdi:weather-fog (fog)
-          "\U000F12CB", # mdi:snowflake-melt (frost)
-          "\U000F0596", # mdi:weather-pouring (heavy_shower, heavy_showers, rain)
-          "\U000F0F33", # mdi:weather-partly-rainy (light_rain)
-                        # mdi:weather-light-showers (light_shower, light_showers)
-          "\U000F0599", # mdi:weather-sunny (mostly_sunny, sunny)
-          "\U000F0595", # mdi:weather-partly-cloudy (partly_cloudy)
-          "\U000F0597", # mdi:weather-rainy (shower, showers)
-          "\U000F0598", # mdi:weather-snowy (snow)
-          "\U000F0593", # mdi:weather-lightning
-          "\U000F067E", # mdi:weather-lightning-rainy (storm, storms)
-          "\U000F059D", # mdi:weather-windy (wind, windy)
-          "\U000F0592", # mdi:weather-hail
+#          "\U000F171D", # mdi:fan-auto
+#          "\U000F1472", # mdi:fan-speed-1
+#          "\U000F1473", # mdi:fan-speed-2
+#          "\U000F1474", # mdi:fan-speed-3
+#          "\U000F032A", # mdi:leaf
+#          "\U000F04B9", # mdi:sofa
+#          "\U000F14DE", # mdi:rocket-launch
+#          "\U000F0D80", # mdi:home-floor-1
+#          "\U000F0D81", # mdi:home-floor-2
+#          "\U000F004D", # mdi:arrow-left
+#          "\U000F09DF", # mdi:circle-small
+#          "\U000F0E03", # mdi:thermometer-chevron-up
+#          "\U000F0E02", # mdi:thermometer-chevron-down
+#          "\U000F0594", # mdi:weather-night (clear)
+#          "\U000F0590", # mdi:weather-cloudy (cloudy)
+#          "\U000F0898", # mdi:weather-hurricane (cyclone, tropical_cyclone)
+#          "\U000F0F30", # mdi:weather-hazy (dust, dusty, haze, hazy)
+#          "\U000F0591", # mdi:weather-fog (fog)
+#          "\U000F12CB", # mdi:snowflake-melt (frost)
+#          "\U000F0596", # mdi:weather-pouring (heavy_shower, heavy_showers, rain)
+#          "\U000F0F33", # mdi:weather-partly-rainy (light_rain)
+#                        # mdi:weather-light-showers (light_shower, light_showers)
+#          "\U000F0599", # mdi:weather-sunny (mostly_sunny, sunny)
+#          "\U000F0595", # mdi:weather-partly-cloudy (partly_cloudy)
+#          "\U000F0597", # mdi:weather-rainy (shower, showers)
+#          "\U000F0598", # mdi:weather-snowy (snow)
+#          "\U000F0593", # mdi:weather-lightning
+#          "\U000F067E", # mdi:weather-lightning-rainy (storm, storms)
+#          "\U000F059D", # mdi:weather-windy (wind, windy)
+#          "\U000F0592", # mdi:weather-hail
           ]
 
   - file: 'gfonts://Roboto@400'
@@ -70,36 +70,40 @@ font:
           "\U000F0717", # mdi:snowflake
           "\U000F1A79", # mdi:sun-snowflake-variant
           "\U000F0210", # mdi:fan
-          "\U000F171D", # mdi:fan-auto
-          "\U000F1472", # mdi:fan-speed-1
-          "\U000F1473", # mdi:fan-speed-2
-          "\U000F1474", # mdi:fan-speed-3
-          "\U000F032A", # mdi:leaf
-          "\U000F04B9", # mdi:sofa
-          "\U000F14DE", # mdi:rocket-launch
-          "\U000F0D80", # mdi:home-floor-1
-          "\U000F0D81", # mdi:home-floor-2
+#          "\U000F171D", # mdi:fan-auto
+#          "\U000F1472", # mdi:fan-speed-1
+#          "\U000F1473", # mdi:fan-speed-2
+#          "\U000F1474", # mdi:fan-speed-3
+#          "\U000F032A", # mdi:leaf
+#          "\U000F04B9", # mdi:sofa
+#          "\U000F14DE", # mdi:rocket-launch
+#          "\U000F0D80", # mdi:home-floor-1
+#          "\U000F0D81", # mdi:home-floor-2
           "\U000F004D", # mdi:arrow-left
           "\U000F09DF", # mdi:circle-small
-          "\U000F0E03", # mdi:thermometer-chevron-up
-          "\U000F0E02", # mdi:thermometer-chevron-down
-          "\U000F0594", # mdi:weather-night (clear)
-          "\U000F0590", # mdi:weather-cloudy (cloudy)
-          "\U000F0898", # mdi:weather-hurricane (cyclone, tropical_cyclone)
-          "\U000F0F30", # mdi:weather-hazy (dust, dusty, haze, hazy)
-          "\U000F0591", # mdi:weather-fog (fog)
-          "\U000F12CB", # mdi:snowflake-melt (frost)
-          "\U000F0596", # mdi:weather-pouring (heavy_shower, heavy_showers, rain)
-          "\U000F0F33", # mdi:weather-partly-rainy (light_rain)
-                        # mdi:weather-light-showers (light_shower, light_showers)
-          "\U000F0599", # mdi:weather-sunny (mostly_sunny, sunny)
-          "\U000F0595", # mdi:weather-partly-cloudy (partly_cloudy)
-          "\U000F0597", # mdi:weather-rainy (shower, showers)
-          "\U000F0598", # mdi:weather-snowy (snow)
-          "\U000F0593", # mdi:weather-lightning
-          "\U000F067E", # mdi:weather-lightning-rainy (storm, storms)
-          "\U000F059D", # mdi:weather-windy (wind, windy)
-          "\U000F0592", # mdi:weather-hail
+#          "\U000F0E03", # mdi:thermometer-chevron-up
+#          "\U000F0E02", # mdi:thermometer-chevron-down
+#          "\U000F0594", # mdi:weather-night (clear)
+#          "\U000F0590", # mdi:weather-cloudy (cloudy)
+#          "\U000F0898", # mdi:weather-hurricane (cyclone, tropical_cyclone)
+#          "\U000F0F30", # mdi:weather-hazy (dust, dusty, haze, hazy)
+#          "\U000F0591", # mdi:weather-fog (fog)
+#          "\U000F12CB", # mdi:snowflake-melt (frost)
+#          "\U000F0596", # mdi:weather-pouring (heavy_shower, heavy_showers, rain)
+#          "\U000F0F33", # mdi:weather-partly-rainy (light_rain)
+#                        # mdi:weather-light-showers (light_shower, light_showers)
+#          "\U000F0599", # mdi:weather-sunny (mostly_sunny, sunny)
+#          "\U000F0595", # mdi:weather-partly-cloudy (partly_cloudy)
+#          "\U000F0597", # mdi:weather-rainy (shower, showers)
+#          "\U000F0598", # mdi:weather-snowy (snow)
+#          "\U000F0593", # mdi:weather-lightning
+#          "\U000F067E", # mdi:weather-lightning-rainy (storm, storms)
+#          "\U000F059D", # mdi:weather-windy (wind, windy)
+#          "\U000F0592", # mdi:weather-hail
+          "\U000F0419", # mdi:plus-circle-outline
+          "\U000F0377", # mdi:minus-circle-outline
+          "\U000F0493", # mdi:cog
+          "\U000F1352", # mdi:hvac
           ]
 
   - file: 'gfonts://Roboto@400'
@@ -111,37 +115,52 @@ font:
       # https://pictogrammers.github.io
       - file: "fonts/materialdesignicons-webfont.ttf"
         glyphs: [
-          "\U000F171D", # mdi:fan-auto
-          "\U000F1472", # mdi:fan-speed-1
-          "\U000F1473", # mdi:fan-speed-2
-          "\U000F1474", # mdi:fan-speed-3
-          "\U000F0594", # mdi:weather-night (clear)
-          "\U000F0590", # mdi:weather-cloudy (cloudy)
-          "\U000F0898", # mdi:weather-hurricane (cyclone, tropical_cyclone)
-          "\U000F0F30", # mdi:weather-hazy (dust, dusty, haze, hazy)
-          "\U000F0591", # mdi:weather-fog (fog)
-          "\U000F12CB", # mdi:snowflake-melt (frost)
-          "\U000F0596", # mdi:weather-pouring (heavy_shower, heavy_showers, rain)
-          "\U000F0F33", # mdi:weather-partly-rainy (light_rain)
-                        # mdi:weather-light-showers (light_shower, light_showers)
-          "\U000F0599", # mdi:weather-sunny (mostly_sunny, sunny)
-          "\U000F0595", # mdi:weather-partly-cloudy (partly_cloudy)
-          "\U000F0597", # mdi:weather-rainy (shower, showers)
-          "\U000F0598", # mdi:weather-snowy (snow)
-          "\U000F0593", # mdi:weather-lightning
-          "\U000F067E", # mdi:weather-lightning-rainy (storm, storms)
-          "\U000F059D", # mdi:weather-windy (wind, windy)
-          "\U000F0592", # mdi:weather-hail
+#          "\U000F171D", # mdi:fan-auto
+#          "\U000F1472", # mdi:fan-speed-1
+#          "\U000F1473", # mdi:fan-speed-2
+#          "\U000F1474", # mdi:fan-speed-3
+#          "\U000F0594", # mdi:weather-night (clear)
+#          "\U000F0590", # mdi:weather-cloudy (cloudy)
+#          "\U000F0898", # mdi:weather-hurricane (cyclone, tropical_cyclone)
+#          "\U000F0F30", # mdi:weather-hazy (dust, dusty, haze, hazy)
+#          "\U000F0591", # mdi:weather-fog (fog)
+#          "\U000F12CB", # mdi:snowflake-melt (frost)
+#          "\U000F0596", # mdi:weather-pouring (heavy_shower, heavy_showers, rain)
+#          "\U000F0F33", # mdi:weather-partly-rainy (light_rain)
+#                        # mdi:weather-light-showers (light_shower, light_showers)
+#          "\U000F0599", # mdi:weather-sunny (mostly_sunny, sunny)
+#          "\U000F0595", # mdi:weather-partly-cloudy (partly_cloudy)
+#          "\U000F0597", # mdi:weather-rainy (shower, showers)
+#          "\U000F0598", # mdi:weather-snowy (snow)
+#          "\U000F0593", # mdi:weather-lightning
+#          "\U000F067E", # mdi:weather-lightning-rainy (storm, storms)
+#          "\U000F059D", # mdi:weather-windy (wind, windy)
+#          "\U000F0592", # mdi:weather-hail
           ]
 
 globals:
   - id: active_lvgl_page
     type: std::string
 
+  - id: last_target_temp_heat
+    type : float
+    restore_value: yes
+    initial_value: '22.0'
+  - id: last_target_temp_cool
+    type : float
+    restore_value: yes
+    initial_value: '22.0'
+
 lvgl:
-  encoders:
-    enter_button: push_button
-    sensor: rotary
+###   
+  on_idle:
+      timeout: !lambda "return (id(display_timeout).state * 1000);"
+      then:
+        - logger.log: "LVGL is idle"
+        - light.turn_off: backlight
+#            id: backlight
+        - lvgl.pause:
+  
   bg_color: black
   scrollbar_mode: "OFF"
   default_font: roboto_reg
@@ -166,6 +185,16 @@ lvgl:
         - globals.set:
             id: active_lvgl_page
             value: '"main_page"'
+        - lvgl.widget.enable:
+            - plus
+            - minus 
+            - settings 
+        #- lvgl.widget.focus: settings
+      on_unload:
+        - lvgl.widget.disable:
+            - plus
+            - minus
+            - settings
       widgets:
         - arc:
             id: arc_bg
@@ -198,6 +227,12 @@ lvgl:
             knob:
               bg_color: white
             value: 230
+            #on_value: !lambda |-
+              #  id(hal).target_temperature_high = value / 10.0;
+              #- logger.log:
+              #    format: "Arc value is: %.0f"
+              #    args: [ 'x' ]
+              
         - meter:
             id: meter_ticks
             height: 480
@@ -212,7 +247,7 @@ lvgl:
                 count: 89
                 length: 37
                 width: 3
-                color: graylight
+                color: graydark
               indicators:
                 - line:
                     id: set_temp_needle
@@ -253,6 +288,12 @@ lvgl:
               bg_opa: TRANSP
               border_width: 0
             options:
+              - 13.0
+              - 13.5
+              - 14.0
+              - 14.5
+              - 15.0
+              - 15.5
               - 16.0
               - 16.5
               - 17.0
@@ -282,7 +323,7 @@ lvgl:
               - 29.0
               - 29.5
               - 30.0
-            selected_index: 14
+            selected_index: 20 
         - label:
             id: celsius_label
             align: CENTER
@@ -326,23 +367,9 @@ lvgl:
             text_font: roboto_huge
             text: " "
         - label:
-            id: zone_1_label
-            align: CENTER
-            x: -15
-            y: 90
-            text_color: graydarker
-            text: "\U000F0D80"
-        - label:
-            id: zone_2_label
-            align: CENTER
-            x: 15
-            y: 90
-            text_color: graydarker
-            text: "\U000F0D81"
-        - label:
             id: current_temp_label
             align: CENTER
-            y: 120
+            y: 75 #80 #210 #195 #120
             text: " "
         - label:
             id: fan_icon_label
@@ -350,7 +377,56 @@ lvgl:
             y: 210
             text_font: roboto_med
             text: " "
-
+            
+        - button:
+            id: plus
+            state:
+              disabled: true
+            x: 85
+            y: 190
+            styles: style_menu_button
+            widgets:
+              - label:
+                  styles: style_menu_button_label
+                  text_font: roboto_med
+                  text: "\U000F0419"
+            on_press:
+                - switch.turn_on: buzzer
+                - lambda: id(increment_temperature)->execute(0.5);
+              
+        - button:
+            id: minus
+            state:
+              disabled: true
+            x: -85
+            y: 190
+            styles: style_menu_button
+            widgets:
+              - label:
+                  styles: style_menu_button_label
+                  text_font: roboto_med
+                  text: "\U000F0377"
+            on_press:
+                - switch.turn_on: buzzer
+                - lambda: id(increment_temperature)->execute(-0.5);
+                    
+        - button:
+            id: settings
+            state:
+              disabled: true
+            x: 0
+            y: 210
+            styles: style_menu_button
+            widgets:
+              - label:
+                  styles: style_menu_button_label
+                  text_font: roboto_med
+                  text: "\U000F0493"
+            on_press:
+              #- logger.log: "settings pressed"
+              - switch.turn_on: buzzer 
+              - script.execute: goto_menu_page
+               
     ### GUI - MENU
     - id: menu_page
       on_load:
@@ -358,24 +434,17 @@ lvgl:
             id: active_lvgl_page
             value: '"menu_page"'
         - script.execute: update_menu_date_label
+        - script.execute: update_menu_weather_label
         - lvgl.widget.enable:
-            - menu_zone_2_button
-            - menu_zone_1_button
             - menu_back_button
             - menu_power_button
             - menu_mode_button
-            - menu_preset_button
-            - menu_fan_button
         - lvgl.widget.focus: menu_power_button
       on_unload:
         - lvgl.widget.disable:
-            - menu_zone_2_button
-            - menu_zone_1_button
             - menu_back_button
             - menu_power_button
             - menu_mode_button
-            - menu_preset_button
-            - menu_fan_button
       widgets:
         - label:
             id: menu_date_label
@@ -391,7 +460,7 @@ lvgl:
             x: 30
             y: -27
             text_align: LEFT
-            text: "\U000F0599"
+            text: "\U000F050F" #"\U000F0599"
         - label:
             id: menu_weather_label
             align: LEFT_MID
@@ -407,68 +476,24 @@ lvgl:
             text_align: LEFT
             text_color: graydark
             text: "INDOOR"
-        - label:
-            id: menu_zone_icon_label
-            align: LEFT_MID
-            x: 30
-            y: 58
-            text_align: LEFT
-            text: "\U000F0D81\n\U000F0D80"
-        - label:
-            id: menu_zone_temp_label
-            align: LEFT_MID
-            x: 60
-            y: 55
-            text_align: LEFT
-            text: "00°C 00%H\n00°C 00%H"
+        #- label:
+        #    id: menu_temp_label
+        #    align: LEFT_MID
+        #    x: 60
+        #    y: 55
+        #    text_align: LEFT
+        #    text: "00°C"    
         - label:
             id: selected_menu_label
             align: CENTER
             x: 55
             text_font: roboto_med
             text_align: RIGHT
-        - button:
-            id: menu_zone_2_button
-            state:
-              disabled: true
-            x: 0
-            y: -210
-            styles: style_menu_button
+        
             widgets:
               - label:
                   styles: style_menu_button_label
-                  text: "\U000F0D81"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_menu_label
-                  text: "Upstairs\nZone"
-            on_press:
-              - homeassistant.action:
-                  action: cover.toggle
-                  data:
-                    entity_id: ${zone_2_entity}
-        - button:
-            id: menu_zone_1_button
-            state:
-              disabled: true
-            x: 105    # 210sin(30) clock coords
-            y: -182   # 210cos(30)
-            styles: style_menu_button
-            widgets:
-              - label:
-                  align: CENTER
-                  y: 3
-                  text_font: roboto_med
-                  text: "\U000F0D80"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_menu_label
-                  text: "Downstairs\nZone"
-            on_press:
-              - homeassistant.action:
-                  action: cover.toggle
-                  data:
-                    entity_id: ${zone_1_entity}
+                  text: " " #"\U000F0D81"
         - button:
             id: menu_back_button
             state:
@@ -485,6 +510,7 @@ lvgl:
                   id: selected_menu_label
                   text: "Back"
             on_press:
+              - switch.turn_on: buzzer
               - script.execute: goto_main_page
         - button:
             id: menu_power_button
@@ -500,7 +526,7 @@ lvgl:
             on_focus:
               - if:
                   condition:
-                    lambda: 'return strcmp(id(hvac_mode).state.c_str(), "off") == 0;'
+                    lambda: 'return (id(hal).mode == CLIMATE_MODE_OFF);' 
                   then:
                     lvgl.label.update:
                       id: selected_menu_label
@@ -510,10 +536,9 @@ lvgl:
                       id: selected_menu_label
                       text: "Turn Off"
             on_press:
-              - homeassistant.action:
-                  action: climate.toggle
-                  data:
-                    entity_id: ${climate_entity}
+              - switch.turn_on: buzzer
+              - lambda: id(hal).make_call().set_mode(CLIMATE_MODE_OFF).perform();
+              - script.execute: set_mode_off
               - script.execute: goto_main_page
         - button:
             id: menu_mode_button
@@ -526,49 +551,22 @@ lvgl:
               - label:
                   id: menu_mode_button_label
                   styles: style_menu_button_label
-                  text: "\U000F0238"
+                  text: !lambda |-
+                    if(id(hal).mode == CLIMATE_MODE_HEAT) 
+                      return "\U000F0238";  // mdi:fire
+                    else if(id(hal).mode == CLIMATE_MODE_COOL) 
+                      return "\U000F0717";  // mdi:snowflake
+                    else if(id(hal).mode == CLIMATE_MODE_FAN_ONLY)
+                      return "\U000F0210"; // mdi:fan
+                    else 
+                      return "\U000F1352";  // mdi:hvac
             on_focus:
               - lvgl.label.update:
                   id: selected_menu_label
                   text: "Mode"
             on_press:
+              - switch.turn_on: buzzer
               - script.execute: goto_mode_page
-        - button:
-            id: menu_preset_button
-            state:
-              disabled: true
-            x: 105
-            y: 182
-            styles: style_menu_button
-            widgets:
-              - label:
-                  id: menu_preset_button_label
-                  styles: style_menu_button_label
-                  text: "\U000F032A"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_menu_label
-                  text: "Presets"
-            on_press:
-              - script.execute: goto_preset_page
-        - button:
-            id: menu_fan_button
-            state:
-              disabled: true
-            styles: style_menu_button
-            x: 0
-            y: 210
-            widgets:
-              - label:
-                  id: menu_fan_button_label
-                  styles: style_menu_button_label
-                  text: "\U000F0210"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_menu_label
-                  text: "Fan\nSpeed"
-            on_press:
-              - script.execute: goto_fan_page
 
     ### GUI - MODE SELECT
     - id: mode_page
@@ -578,20 +576,25 @@ lvgl:
             value: '"mode_page"'
         - lvgl.widget.enable:
             - mode_back_button
-            - mode_heat_cool_button
             - mode_cool_button
             - mode_heat_button
             - mode_fan_button
-            - mode_dry_button
         - lvgl.widget.focus: mode_cool_button
+#        - lvgl.widget.focus: !lambda |-
+#                    if(id(hal).mode == CLIMATE_MODE_HEAT) 
+#                      return mode_heat_button;
+#                    else if(id(hal).mode == CLIMATE_MODE_COOL) 
+#                      return mode_cool_button;
+#                    else if(id(hal).mode == CLIMATE_MODE_FAN_ONLY)
+#                      return mode_fan_button
+#                    else 
+#                      return mode_back_button;
       on_unload:
         - lvgl.widget.disable:
             - mode_back_button
-            - mode_heat_cool_button
             - mode_cool_button
             - mode_heat_button
             - mode_fan_button
-            - mode_dry_button
       widgets:
         - label:
             id: selected_mode_label
@@ -615,29 +618,9 @@ lvgl:
                   id: selected_mode_label
                   text: "Back"
             on_press:
+              - switch.turn_on: buzzer
               - script.execute: goto_menu_page
-        - button:
-            id: mode_heat_cool_button
-            state:
-              disabled: true
-            x: 182
-            y: -105
-            styles: style_menu_button
-            widgets:
-              - label:
-                  styles: style_menu_button_label
-                  text: "\U000F1A79"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_mode_label
-                  text: "Auto"
-            on_press:
-              - homeassistant.action:
-                  action: climate.set_hvac_mode
-                  data:
-                    entity_id: ${climate_entity}
-                    hvac_mode: "heat_cool"
-              - script.execute: goto_main_page
+
         - button:
             id: mode_cool_button
             state:
@@ -654,11 +637,14 @@ lvgl:
                   id: selected_mode_label
                   text: "Cool"
             on_press:
-              - homeassistant.action:
-                  action: climate.set_hvac_mode
-                  data:
-                    entity_id: ${climate_entity}
-                    hvac_mode: "cool"
+              - switch.turn_on: buzzer
+              #- homeassistant.action:
+              #    action: climate.set_hvac_mode
+              #    data:
+              #      entity_id: ${climate_entity}
+              #      hvac_mode: "cool"
+              - lambda: id(hal).make_call().set_mode(CLIMATE_MODE_COOL).perform();   
+              - script.execute: set_mode_cool      
               - script.execute: goto_main_page
         - button:
             id: mode_heat_button
@@ -676,11 +662,14 @@ lvgl:
                   id: selected_mode_label
                   text: "Heat"
             on_press:
-              - homeassistant.action:
-                  action: climate.set_hvac_mode
-                  data:
-                    entity_id: ${climate_entity}
-                    hvac_mode: "heat"
+              - switch.turn_on: buzzer
+              #- homeassistant.action:
+              #    action: climate.set_hvac_mode
+              #    data:
+              #      entity_id: ${climate_entity}
+              #      hvac_mode: "heat"
+              - lambda: id(hal).make_call().set_mode(CLIMATE_MODE_HEAT).perform();     
+              - script.execute: set_mode_heat      
               - script.execute: goto_main_page
         - button:
             id: mode_fan_button
@@ -698,317 +687,17 @@ lvgl:
                   id: selected_mode_label
                   text: "Fan"
             on_press:
-              - homeassistant.action:
-                  action: climate.set_hvac_mode
-                  data:
-                    entity_id: ${climate_entity}
-                    hvac_mode: "fan_only"
-              - script.execute: goto_main_page
-        - button:
-            id: mode_dry_button
-            state:
-              disabled: true
-            x: 0
-            y: 210
-            styles: style_menu_button
-            widgets:
-              - label:
-                  styles: style_menu_button_label
-                  text: "\U000F058E"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_mode_label
-                  text: "Dehumidify"
-            on_press:
-              - homeassistant.action:
-                  action: climate.set_hvac_mode
-                  data:
-                    entity_id: ${climate_entity}
-                    hvac_mode: "dry"
-              - script.execute: goto_main_page
-
-    ### GUI - PRESET SELECT
-    - id: preset_page
-      on_load:
-        - globals.set:
-            id: active_lvgl_page
-            value: '"preset_page"'
-        - lvgl.widget.enable:
-            - preset_back_button
-            - preset_eco_button
-            - preset_comfort_button
-            - preset_boost_button
-        - lvgl.widget.focus: preset_eco_button
-      on_unload:
-        - lvgl.widget.disable:
-            - preset_back_button
-            - preset_eco_button
-            - preset_comfort_button
-            - preset_boost_button
-      widgets:
-        - label:
-            id: selected_preset_label
-            align: CENTER
-            x: 55
-            text_font: roboto_med
-            text_align: RIGHT
-        - button:
-            id: preset_back_button
-            state:
-              disabled: true
-            x: 182
-            y: -105
-            styles: style_menu_button
-            widgets:
-              - label:
-                  styles: style_menu_button_label
-                  text: "\U000F004D"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_preset_label
-                  text: "Back"
-            on_press:
-              - script.execute: goto_menu_page
-        - button:
-            id: preset_eco_button
-            state:
-              disabled: true
-            x: 210
-            y: 0
-            styles: style_menu_button
-            widgets:
-              - label:
-                  styles: style_menu_button_label
-                  text: "\U000F032A"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_preset_label
-                  text: "Eco"
-            on_press:
-              - if:
-                  condition:
-                    lambda: 'return strcmp(id(preset_mode).state.c_str(), "eco") == 0;'
-                  then:
-                    - homeassistant.action:
-                        action: climate.set_preset_mode
-                        data:
-                          entity_id: ${climate_entity}
-                          preset_mode: "none"
-                  else:
-                    - homeassistant.action:
-                        action: climate.set_preset_mode
-                        data:
-                          entity_id: ${climate_entity}
-                          preset_mode: "eco"
-              - script.execute: goto_main_page
-        - button:
-            id: preset_comfort_button
-            state:
-              disabled: true
-            x: 182
-            y: 105
-            styles: style_menu_button
-            widgets:
-              - label:
-                  styles: style_menu_button_label
-                  text: "\U000F04B9"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_preset_label
-                  text: "Comfort"
-            on_press:
-              - if:
-                  condition:
-                    lambda: 'return strcmp(id(preset_mode).state.c_str(), "comfort") == 0;'
-                  then:
-                    - homeassistant.action:
-                        action: climate.set_preset_mode
-                        data:
-                          entity_id: ${climate_entity}
-                          preset_mode: "none"
-                  else:
-                    - homeassistant.action:
-                        action: climate.set_preset_mode
-                        data:
-                          entity_id: ${climate_entity}
-                          preset_mode: "comfort"
-              - script.execute: goto_main_page
-        - button:
-            id: preset_boost_button
-            state:
-              disabled: true
-            x: 105
-            y: 182
-            styles: style_menu_button
-            widgets:
-              - label:
-                  styles: style_menu_button_label
-                  text: "\U000F14DE"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_preset_label
-                  text: "Boost"
-            on_press:
-              - if:
-                  condition:
-                    lambda: 'return strcmp(id(preset_mode).state.c_str(), "boost") == 0;'
-                  then:
-                    - homeassistant.action:
-                        action: climate.set_preset_mode
-                        data:
-                          entity_id: ${climate_entity}
-                          preset_mode: "none"
-                  else:
-                    - homeassistant.action:
-                        action: climate.set_preset_mode
-                        data:
-                          entity_id: ${climate_entity}
-                          preset_mode: "boost"
-              - script.execute: goto_main_page
-
-    ### GUI - FAN SPEED SELECT
-    - id: fan_page
-      on_load:
-        - globals.set:
-            id: active_lvgl_page
-            value: '"fan_page"'
-        - lvgl.widget.enable:
-            - fan_back_button
-            - fan_auto_button
-            - fan_high_button
-            - fan_medium_button
-            - fan_low_button
-        - lvgl.widget.focus: fan_auto_button
-      on_unload:
-        - lvgl.widget.disable:
-            - fan_back_button
-            - fan_auto_button
-            - fan_high_button
-            - fan_medium_button
-            - fan_low_button
-      widgets:
-        - label:
-            id: selected_fan_label
-            align: CENTER
-            x: 55
-            text_font: roboto_med
-            text_align: RIGHT
-        - button:
-            id: fan_back_button
-            state:
-              disabled: true
-            x: 182
-            y: -105
-            styles: style_menu_button
-            widgets:
-              - label:
-                  styles: style_menu_button_label
-                  text: "\U000F004D"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_fan_label
-                  text: "Back"
-            on_press:
-              - script.execute: goto_menu_page
-        - button:
-            id: fan_auto_button
-            state:
-              disabled: true
-            x: 210
-            y: 0
-            styles: style_menu_button
-            widgets:
-              - label:
-                  styles: style_menu_button_label
-                  text: "\U000F171D"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_fan_label
-                  text: "Auto"
-            on_press:
-              - homeassistant.action:
-                  action: climate.set_fan_mode
-                  data:
-                    entity_id: ${climate_entity}
-                    fan_mode: "auto"
-              - script.execute: goto_main_page
-        - button:
-            id: fan_high_button
-            state:
-              disabled: true
-            x: 182
-            y: 105
-            styles: style_menu_button
-            widgets:
-              - label:
-                  styles: style_menu_button_label
-                  text: "\U000F1474"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_fan_label
-                  text: "High"
-            on_press:
-              - homeassistant.action:
-                  action: climate.set_fan_mode
-                  data:
-                    entity_id: ${climate_entity}
-                    fan_mode: "high"
-              - script.execute: goto_main_page
-        - button:
-            id: fan_medium_button
-            state:
-              disabled: true
-            x: 105
-            y: 182
-            styles: style_menu_button
-            widgets:
-              - label:
-                  styles: style_menu_button_label
-                  text: "\U000F1473"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_fan_label
-                  text: "Medium"
-            on_press:
-              - homeassistant.action:
-                  action: climate.set_fan_mode
-                  data:
-                    entity_id: ${climate_entity}
-                    fan_mode: "medium"
-              - script.execute: goto_main_page
-        - button:
-            id: fan_low_button
-            state:
-              disabled: true
-            x: 0
-            y: 210
-            styles: style_menu_button
-            widgets:
-              - label:
-                  styles: style_menu_button_label
-                  text: "\U000F1472"
-            on_focus:
-              - lvgl.label.update:
-                  id: selected_fan_label
-                  text: "Low"
-            on_press:
-              - homeassistant.action:
-                  action: climate.set_fan_mode
-                  data:
-                    entity_id: ${climate_entity}
-                    fan_mode: "low"
+              - switch.turn_on: buzzer
+              #- homeassistant.action:
+              #    action: climate.set_hvac_mode
+              #    data:
+              #      entity_id: ${climate_entity}
+              #      hvac_mode: "fan_only"   
+              - lambda: id(hal).make_call().set_mode(CLIMATE_MODE_FAN_ONLY).perform();  
+              - script.execute: set_mode_fan      
               - script.execute: goto_main_page
 
 script:
-  - id: vibrate
-    parameters:
-      length_ms: int
-    then:
-      # XXX doesn't delay properly for short lengths (10-100ms)
-      - switch.turn_on: vibration
-      - delay: !lambda return length_ms;
-      - switch.turn_off: vibration
-
   # navigate to pages with animation
   - id: goto_main_page
     then:
@@ -1028,18 +717,6 @@ script:
           id: mode_page
           animation: FADE_IN
           time: 500ms
-  - id: goto_preset_page
-    then:
-      - lvgl.page.show:
-          id: preset_page
-          animation: FADE_IN
-          time: 500ms
-  - id: goto_fan_page
-    then:
-      - lvgl.page.show:
-          id: fan_page
-          animation: FADE_IN
-          time: 500ms
 
   # hvac mode UI scripts
   - id: update_menu_date_label
@@ -1047,125 +724,112 @@ script:
       - lvgl.label.update:
           id: menu_date_label
           text: !lambda |-
-            auto now = id(hass_time).now();
+            auto now = id(pcf85063_time).now();
             static const char * const day_names[] = {"SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"};
             static char buf[10];
             snprintf(buf, sizeof(buf), "%s %02d:%02d", day_names[now.day_of_week-1], now.hour, now.minute);
             return buf;
-  - id: update_menu_zone_temp_label
+  
+  - id: update_menu_temp_label
     then:
       - lvgl.label.update:
-          id: menu_zone_temp_label
-          text: 
-            format: "%.0f°C \U000F058E %.0f%%\n%.0f°C \U000F058E %.0f%%"
-            args: [ 'round(id(zone_2_temp).state)', 'round(id(zone_2_humidity).state)', 'round(id(zone_1_temp).state)', 'round(id(zone_1_humidity).state)' ]
-
-  - id: set_mode_off
+          id: current_temp_label 
+          #text_color: white
+          text: !lambda return str_sprintf("%.1f°C  %.1f%%RH", id(room_temperature).state, id(room_humidity).state); 
+            
+  - id: set_mode_idle
     then:
-      - script.execute: hide_widgets
+      - script.execute: set_hvac_mode
+                    
+  - id: set_mode_off 
+    then:                 
+          - script.execute: hide_widgets
+          - lvgl.label.update:
+              id: mode_label
+              text: "OFF"
+          - lvgl.widget.update:
+              id: mode_bg
+              bg_color: black
+          - lvgl.label.update:
+              id: menu_mode_button_label
+              text_color: white
+              text: "\U000F1352" #"\U000F0717"
+          - lvgl.widget.update:
+              id: menu_power_button
+              text_color: graydark
+          - lvgl.widget.update:
+              id: mode_heat_button
+              text_color: white
+          - lvgl.widget.update:
+              id: mode_cool_button
+              text_color: white
+          - lvgl.widget.update:
+              id: mode_fan_button
+              text_color: white
+              
+  - id: set_hvac_mode
+    then: 
+      - script.execute: show_widgets
       - lvgl.label.update:
           id: mode_label
-          text: "OFF"
+          text: !lambda |-
+                  if(id(hal).mode == CLIMATE_MODE_HEAT) 
+                    return "HEAT TO";
+                  else 
+                    return "COOL TO";
       - lvgl.widget.update:
           id: mode_bg
-          bg_color: black
-      - light.turn_off: rgb_ring
+          bg_color: !lambda |-
+                  if(id(hal).action == CLIMATE_ACTION_IDLE  || id(hal).action == CLIMATE_ACTION_OFF) {
+                    return black;
+                  }
+                  else {
+                    if(id(hal).mode == CLIMATE_MODE_HEAT) 
+                      return mode_heat;
+                    else 
+                      return mode_cool;
+                  }
       - lvgl.label.update:
           id: menu_mode_button_label
-          text_color: white
-          text: "\U000F0717"
+          text_color: !lambda |-
+                    if(id(hal).mode == CLIMATE_MODE_HEAT) 
+                      return mode_heat;  
+                    else if(id(hal).mode == CLIMATE_MODE_COOL) 
+                      return mode_cool;  
+                    else 
+                      return white;  
+          text: !lambda |-
+                    if(id(hal).mode == CLIMATE_MODE_HEAT) 
+                      return "\U000F0238";  // mdi:fire
+                    else if(id(hal).mode == CLIMATE_MODE_COOL) 
+                      return "\U000F0717";  // mdi:snowflake
+                    else 
+                      return "\U000F1352";  // mdi:hvac
       - lvgl.widget.update:
           id: menu_power_button
-          text_color: graydark
+          text_color: white
       - lvgl.widget.update:
           id: mode_heat_button
-          text_color: white
+          text_color: !lambda |-
+                          if(id(hal).mode == CLIMATE_MODE_HEAT) return mode_heat;
+                          return white;
       - lvgl.widget.update:
           id: mode_cool_button
-          text_color: white
+          text_color: !lambda |-
+                          if(id(hal).mode == CLIMATE_MODE_COOL) return mode_cool;
+                          return white;
       - lvgl.widget.update:
           id: mode_fan_button
           text_color: white
-      - lvgl.widget.update:
-          id: mode_dry_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_heat_cool_button
-          text_color: white
+      
   - id: set_mode_heat
     then:
-      - script.execute: show_widgets
-      - lvgl.label.update:
-          id: mode_label
-          text: "HEAT TO"
-      - lvgl.widget.update:
-          id: mode_bg
-          bg_color: mode_heat
-      - light.turn_on:
-          id: rgb_ring
-          brightness: 100%
-          red:   1.000
-          green: 0.533
-          blue:  0.118
-      - lvgl.label.update:
-          id: menu_mode_button_label
-          text_color: mode_heat
-          text: "\U000F0238"
-      - lvgl.widget.update:
-          id: menu_power_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_heat_button
-          text_color: mode_heat
-      - lvgl.widget.update:
-          id: mode_cool_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_fan_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_dry_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_heat_cool_button
-          text_color: white
+      - script.execute: set_hvac_mode
+              
   - id: set_mode_cool
     then:
-      - script.execute: show_widgets
-      - lvgl.label.update:
-          id: mode_label
-          text: "COOL TO"
-      - lvgl.widget.update:
-          id: mode_bg
-          bg_color: mode_cool
-      - light.turn_on:
-          id: rgb_ring
-          brightness: 100%
-          red:   0.498
-          green: 0.675
-          blue:  1.000
-      - lvgl.label.update:
-          id: menu_mode_button_label
-          text_color: mode_cool
-          text: "\U000F0717"
-      - lvgl.widget.update:
-          id: menu_power_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_heat_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_cool_button
-          text_color: mode_cool
-      - lvgl.widget.update:
-          id: mode_fan_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_dry_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_heat_cool_button
-          text_color: white
+      - script.execute: set_hvac_mode
+    
   - id: set_mode_fan
     then:
       - script.execute: show_widgets
@@ -1173,7 +837,6 @@ script:
           - current_temp_arc
           - set_temp_roller
           - celsius_label
-          - current_temp_label
           - fan_icon_label
       - lvgl.indicator.update:
           id: set_temp_needle
@@ -1189,12 +852,6 @@ script:
       - lvgl.widget.update:
           id: mode_bg
           bg_color: mode_fan
-      - light.turn_on:
-          id: rgb_ring
-          brightness: 100%
-          red:   0.749
-          green: 0.980
-          blue:  1.000
       - lvgl.label.update:
           id: menu_mode_button_label
           text_color: mode_fan
@@ -1211,245 +868,14 @@ script:
       - lvgl.widget.update:
           id: mode_fan_button
           text_color: mode_fan
-      - lvgl.widget.update:
-          id: mode_dry_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_heat_cool_button
-          text_color: white
-  - id: set_mode_dry
-    then:
-      - script.execute: show_widgets
-      - lvgl.label.update:
-          id: mode_label
-          text: "DEHUMIDIFY"
-      - lvgl.widget.update:
-          id: mode_bg
-          bg_color: mode_dry
-      - light.turn_on:
-          id: rgb_ring
-          brightness: 100%
-          red:   1.000
-          green: 0.753
-          blue:  0.549
-      - lvgl.label.update:
-          id: menu_mode_button_label
-          text_color: mode_dry
-          text: "\U000F058E"
-      - lvgl.widget.update:
-          id: menu_power_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_heat_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_cool_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_fan_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_dry_button
-          text_color: mode_dry
-      - lvgl.widget.update:
-          id: mode_heat_cool_button
-          text_color: white
-  - id: set_mode_heat_cool
-    then:
-      - script.execute: show_widgets
-      - lvgl.label.update:
-          id: mode_label
-          text: "AUTO TO"
-      - lvgl.widget.update:
-          id: mode_bg
-          bg_color: graylight
-      - light.turn_on:
-          id: rgb_ring
-          brightness: 100%
-          red:   1.000
-          green: 0.894
-          blue:  0.804
-      - lvgl.label.update:
-          id: menu_mode_button_label
-          text_color: mode_heat_cool
-          text: "\U000F1A79"
-      - lvgl.widget.update:
-          id: menu_power_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_heat_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_cool_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_fan_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_dry_button
-          text_color: white
-      - lvgl.widget.update:
-          id: mode_heat_cool_button
-          text_color: mode_heat_cool
 
-  # preset mode UI scripts
-  - id: set_preset_none
+  - id: update_menu_weather_label
     then:
       - lvgl.label.update:
-          id: menu_preset_button_label
-          text_color: white
-          text: "\U000F032A"
-      - lvgl.widget.update:
-          id: preset_eco_button
-          text_color: white
-      - lvgl.widget.update:
-          id: preset_comfort_button
-          text_color: white
-      - lvgl.widget.update:
-          id: preset_boost_button
-          text_color: white
-  - id: set_preset_eco
-    then:
-      - lvgl.label.update:
-          id: menu_preset_button_label
-          text_color: green
-          text: "\U000F032A"
-      - lvgl.widget.update:
-          id: preset_eco_button
-          text_color: green
-      - lvgl.widget.update:
-          id: preset_comfort_button
-          text_color: white
-      - lvgl.widget.update:
-          id: preset_boost_button
-          text_color: white
-  - id: set_preset_comfort
-    then:
-      - lvgl.label.update:
-          id: menu_preset_button_label
-          text_color: amber
-          text: "\U000F04B9"
-      - lvgl.widget.update:
-          id: preset_eco_button
-          text_color: white
-      - lvgl.widget.update:
-          id: preset_comfort_button
-          text_color: amber
-      - lvgl.widget.update:
-          id: preset_boost_button
-          text_color: white
-  - id: set_preset_boost
-    then:
-      - lvgl.label.update:
-          id: menu_preset_button_label
-          text_color: red
-          text: "\U000F14DE"
-      - lvgl.widget.update:
-          id: preset_eco_button
-          text_color: white
-      - lvgl.widget.update:
-          id: preset_comfort_button
-          text_color: white
-      - lvgl.widget.update:
-          id: preset_boost_button
-          text_color: red
-
-  # fan UI scripts
-  - id: set_fan_auto
-    then:
-      - lvgl.label.update:
-          id: big_fan_icon_label
-          text: "\U000F171D"
-      - lvgl.label.update:
-          id: fan_icon_label
-          text: "\U000F171D"
-      - lvgl.label.update:
-          id: menu_fan_button_label
-          text: "\U000F171D"
-  - id: set_fan_low
-    then:
-      - lvgl.label.update:
-          id: big_fan_icon_label
-          text: "\U000F1472"
-      - lvgl.label.update:
-          id: fan_icon_label
-          text: "\U000F1472"
-      - lvgl.label.update:
-          id: menu_fan_button_label
-          text: "\U000F1472"
-  - id: set_fan_medium
-    then:
-      - lvgl.label.update:
-          id: big_fan_icon_label
-          text: "\U000F1473"
-      - lvgl.label.update:
-          id: fan_icon_label
-          text: "\U000F1473"
-      - lvgl.label.update:
-          id: menu_fan_button_label
-          text: "\U000F1473"
-  - id: set_fan_high
-    then:
-      - lvgl.label.update:
-          id: big_fan_icon_label
-          text: "\U000F1474"
-      - lvgl.label.update:
-          id: fan_icon_label
-          text: "\U000F1474"
-      - lvgl.label.update:
-          id: menu_fan_button_label
-          text: "\U000F1474"
-
-  # zone UI scripts
-  - id: set_zone_1
-    then:
-      - lvgl.label.update:
-          id: zone_1_label
-          text_color: white
-      - lvgl.widget.update:
-          id: menu_zone_1_button
-          text_color: white
-  - id: unset_zone_1
-    then:
-      - lvgl.label.update:
-          id: zone_1_label
-          text_color: graydark
-      - lvgl.widget.update:
-          id: menu_zone_1_button
-          text_color: graydark
-  - id: set_zone_2
-    then:
-      - lvgl.label.update:
-          id: zone_2_label
-          text_color: white
-      - lvgl.widget.update:
-          id: menu_zone_2_button
-          text_color: white
-  - id: unset_zone_2
-    then:
-      - lvgl.label.update:
-          id: zone_2_label
-          text_color: graydark
-      - lvgl.widget.update:
-          id: menu_zone_2_button
-          text_color: graydark
-
-  # OFF mode weather UI scripts
-  - id: update_weather_forecast_label
-    then:
-      lvgl.label.update:
-        id: weather_forecast_label
-        text: !lambda |-
-          auto low = round(id(bom_low_temp).state);
-          auto high = round(id(bom_high_temp).state);
-          auto rain = round(id(bom_rain_chance).state);
-          static char buf[32];
-          if (!isnan(low)) {
-            snprintf(buf, sizeof(buf), "\U000F0E03 %.0f–%.0f°C  \U000F0597 %.0f%%", low, high, rain);
-          } else {
-            snprintf(buf, sizeof(buf), "\U000F0E03 %.0f°C  \U000F0597 %.0f%%", high, rain);
-          }
-          return buf;
+          id: menu_weather_label
+          text: 
+            format: "%.0f°C"
+            args: [ 'round(id(hal).current_temperature)']
 
   - id: show_widgets
     then:
@@ -1457,12 +883,12 @@ script:
         - current_temp_arc
         - set_temp_roller
         - celsius_label
-        - fan_icon_label
         - current_temp_label
-        - zone_1_label
-        - zone_2_label
         - meter_ticks
         - mode_label
+        - plus
+        - minus 
+        - settings 
       - lvgl.widget.hide:
         - big_fan_icon_label
         - weather_icon_label
@@ -1483,19 +909,97 @@ script:
         - set_temp_roller
         - celsius_label
         - fan_icon_label
-        - current_temp_label
-        - zone_1_label
-        - zone_2_label
         - meter_ticks
-        - mode_label
       - lvgl.widget.show:
-        - weather_icon_label
-        - weather_temp_label
-        - weather_forecast_label
-        - weather_feels_like_label
       - lvgl.indicator.update:
           id: set_temp_needle
           opa: TRANSP
       - lvgl.indicator.update:
           id: diff_temp_arc
           opa: TRANSP
+          
+  - id: update_roller_needle_and_arc
+    then:
+      if:
+          condition:
+            lambda: 'return (id(hal).target_temperature_low <= ${max_thermostat_temp}) && (id(hal).target_temperature_low >= ${min_thermostat_temp}) && (id(hal).target_temperature_high <= ${max_thermostat_temp}) && (id(hal).target_temperature_high >= ${min_thermostat_temp});' 
+          then:
+            - script.execute: _update_roller_needle_and_arc  
+            
+  - id: _update_roller_needle_and_arc
+    then:
+       if:
+          condition:
+            lambda: 'return id(hal).mode == CLIMATE_MODE_HEAT;'
+          then:
+          - lvgl.indicator.update:
+              id: set_temp_needle
+              value: !lambda return id(hal).target_temperature_low * 10.0;
+          - lvgl.arc.update:
+              id: current_temp_arc
+              value: !lambda return id(hal).current_temperature * 10.0;
+          - lvgl.indicator.update:
+              id: diff_temp_arc
+              start_value: !lambda |-
+                return id(hal).target_temperature_low < id(hal).current_temperature ? id(hal).target_temperature_low * 10.0 : id(hal).current_temperature * 10.0;
+              end_value: !lambda |-
+                if(id(hal).current_temperature < ${min_thermostat_temp})
+                  return ${min_thermostat_temp} * 10.0;
+                if(isnan(id(hal).current_temperature))
+                  return ${min_thermostat_temp} * 10.0;
+                return id(hal).target_temperature_low < id(hal).current_temperature ? id(hal).current_temperature * 10.0 : id(hal).target_temperature_low * 10.0;
+          - lvgl.roller.update:
+              id: set_temp_roller
+              selected_index: !lambda return 2 * (id(hal).target_temperature_low - ${min_thermostat_temp});  # returns index of roller value
+          else:
+          - lvgl.indicator.update:
+              id: set_temp_needle
+              value: !lambda return id(hal).target_temperature_high * 10.0;
+          - lvgl.arc.update:
+              id: current_temp_arc
+              value: !lambda return id(hal).current_temperature * 10.0;
+          - lvgl.indicator.update:
+              id: diff_temp_arc
+              start_value: !lambda |-
+                return id(hal).target_temperature_high < id(hal).current_temperature ? id(hal).target_temperature_high * 10.0 : id(hal).current_temperature * 10.0;
+              end_value: !lambda |-
+                return id(hal).target_temperature_high < id(hal).current_temperature ? id(hal).current_temperature * 10.0 : id(hal).target_temperature_high * 10.0;
+          - lvgl.roller.update:
+              id: set_temp_roller
+              selected_index: !lambda return 2 * (id(hal).target_temperature_high - ${min_thermostat_temp});  # returns index of roller value   
+              
+
+  - id: increment_temperature
+    parameters:
+      temperature: float
+    then:
+      - lambda: |-
+            //static const char* TAG = "Test";
+            //ESP_LOGI(TAG, "value: %f", temperature);
+            if(id(hal).mode == CLIMATE_MODE_HEAT) {    // Need to adjust target_temperature_low
+              //id(hal).target_temperature_high += temperature;
+              id(hal).target_temperature_low += temperature;
+              id(update_roller_needle_and_arc).execute(); 
+            }
+            if(id(hal).mode == CLIMATE_MODE_COOL) {   // Need to adjust target_temperature_high
+              //id(hal).target_temperature_low += temperature;
+              id(hal).target_temperature_high += temperature;
+              id(update_roller_needle_and_arc).execute();
+            }
+            
+  - id: set_target_temperature
+    parameters:
+      temperature: float
+    then:
+      - lambda: |-
+            //static const char* TAG = "Test";
+            //ESP_LOGI(TAG, "value: %f", temperature);
+            if(id(hal).mode == CLIMATE_MODE_HEAT) {    // Need to adjust target_temperature_low
+              id(hal).target_temperature_low = temperature;
+              id(update_roller_needle_and_arc).execute(); 
+            }
+            if(id(hal).mode == CLIMATE_MODE_COOL) {   // Need to adjust target_temperature_high
+              id(hal).target_temperature_high = temperature;
+              id(update_roller_needle_and_arc).execute();
+            }  
+ 

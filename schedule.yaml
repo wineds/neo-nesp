@@ -1,0 +1,339 @@
+datetime:
+# Heating Schedules
+  - platform: template
+    id: heat_off_1
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Heat Off 1
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 11
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_HEAT) {  // Only for Heating mode
+            if(!(id(heat_off_1).hour == id(heat_on_1).hour && id(heat_off_1).minute == id(heat_on_1).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule1";
+              ESP_LOGI(TAG, "heat_off");
+              if(id(hal).target_temperature_low != ${min_thermostat_temp})
+                id(last_target_temp_heat) = id(hal).target_temperature_low;  // Save valid current temp setting
+              id(set_target_temperature)->execute(${min_thermostat_temp});
+            }
+          }
+          
+  - platform: template
+    id: heat_on_1
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Heat On 1
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 10
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_HEAT) {  // Only for Heating mode
+            if(!(id(heat_off_1).hour == id(heat_on_1).hour && id(heat_off_1).minute == id(heat_on_1).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule1";
+              ESP_LOGI(TAG, "heat_on");
+              id(set_target_temperature)->execute(id(last_target_temp_heat));
+            }
+          }
+
+  - platform: template
+    id: heat_off_2
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Heat Off 2
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 13
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_HEAT) {  // Only for Heating mode
+            if(!(id(heat_off_2).hour == id(heat_on_2).hour && id(heat_off_2).minute == id(heat_on_2).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule2";
+              ESP_LOGI(TAG, "heat_off");
+              if(id(hal).target_temperature_low != ${min_thermostat_temp})
+                id(last_target_temp_heat) = id(hal).target_temperature_low;  // Save valid current temp setting
+              id(set_target_temperature)->execute(${min_thermostat_temp});
+            }
+          }
+          
+  - platform: template
+    id: heat_on_2
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Heat On 2
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 12
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_HEAT) {  // Only for Heating mode
+            if(!(id(heat_off_2).hour == id(heat_on_2).hour && id(heat_off_2).minute == id(heat_on_2).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule2";
+              ESP_LOGI(TAG, "heat_on");
+              id(set_target_temperature)->execute(id(last_target_temp_heat));
+            }
+          }
+                
+  - platform: template
+    id: heat_off_3
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Heat Off 3
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 15
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_HEAT) {  // Only for Heating mode
+            if(!(id(heat_off_3).hour == id(heat_on_3).hour && id(heat_off_3).minute == id(heat_on_3).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule3";
+              ESP_LOGI(TAG, "heat_off");
+              if(id(hal).target_temperature_low != ${min_thermostat_temp})
+                id(last_target_temp_heat) = id(hal).target_temperature_low;  // Save valid current temp setting
+              id(set_target_temperature)->execute(${min_thermostat_temp});
+            }
+          }
+          
+  - platform: template
+    id: heat_on_3
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Heat On 3
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 14
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_HEAT) {  // Only for Heating mode
+            if(!(id(heat_off_3).hour == id(heat_on_3).hour && id(heat_off_3).minute == id(heat_on_3).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule3";
+              ESP_LOGI(TAG, "heat_on");
+              id(set_target_temperature)->execute(id(last_target_temp_heat));
+            }
+          }
+          
+  - platform: template
+    id: heat_off_4
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Heat Off 4
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 17
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_HEAT) {  // Only for Heating mode
+            if(!(id(heat_off_4).hour == id(heat_on_4).hour && id(heat_off_4).minute == id(heat_on_4).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule4";
+              ESP_LOGI(TAG, "heat_off");
+              if(id(hal).target_temperature_low != ${min_thermostat_temp})
+                id(last_target_temp_heat) = id(hal).target_temperature_low;  // Save valid current temp setting
+              id(set_target_temperature)->execute(${min_thermostat_temp});
+            }
+          }
+
+  - platform: template
+    id: heat_on_4
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Heat On 4
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 16
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_HEAT) {  // Only for Heating mode
+            if(!(id(heat_off_4).hour == id(heat_on_4).hour && id(heat_off_4).minute == id(heat_on_4).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule4";
+              ESP_LOGI(TAG, "heat_on");
+              id(set_target_temperature)->execute(id(last_target_temp_heat));
+            }
+          }
+          
+# Cooling Schedules
+  - platform: template
+    id: cool_off_1
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Cool Off 1
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 19
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_COOL) {  // Only for Cooling mode
+            if(!(id(cool_off_1).hour == id(cool_on_1).hour && id(cool_off_1).minute == id(cool_on_1).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule1";
+              ESP_LOGI(TAG, "cool_off");
+              if(id(hal).target_temperature_high != ${max_thermostat_temp})
+                id(last_target_temp_cool) = id(hal).target_temperature_high;  // Save valid current temp setting
+              id(set_target_temperature)->execute(${max_thermostat_temp});
+            }
+          }
+          
+  - platform: template
+    id: cool_on_1
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Cool On 1
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 18
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_COOL) {  // Only for Cooling mode
+            if(!(id(cool_off_1).hour == id(cool_on_1).hour && id(cool_off_1).minute == id(cool_on_1).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule1";
+              ESP_LOGI(TAG, "cool_on");
+              id(set_target_temperature)->execute(id(last_target_temp_cool));
+            }
+          }
+
+  - platform: template
+    id: cool_off_2
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Cool Off 2
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 21
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_COOL) {  // Only for Cooling mode
+            if(!(id(cool_off_2).hour == id(cool_on_2).hour && id(cool_off_2).minute == id(cool_on_2).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule2";
+              ESP_LOGI(TAG, "cool_off");
+              if(id(hal).target_temperature_high != ${max_thermostat_temp})
+                id(last_target_temp_cool) = id(hal).target_temperature_high;  // Save valid current temp setting
+              id(set_target_temperature)->execute(${max_thermostat_temp});
+            }
+          }
+          
+  - platform: template
+    id: cool_on_2
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Cool On 2
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 20
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_COOL) {  // Only for Cooling mode
+            if(!(id(cool_off_2).hour == id(cool_on_2).hour && id(cool_off_2).minute == id(cool_on_2).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule2";
+              ESP_LOGI(TAG, "cool_on");
+              id(set_target_temperature)->execute(id(last_target_temp_cool));
+            }
+          }
+                
+  - platform: template
+    id: cool_off_3
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Cool Off 3
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 23
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_COOL) {  // Only for Cooling mode
+            if(!(id(cool_off_3).hour == id(cool_on_3).hour && id(cool_off_3).minute == id(cool_on_3).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule3";
+              ESP_LOGI(TAG, "cool_off");
+              if(id(hal).target_temperature_high != ${max_thermostat_temp})
+                id(last_target_temp_cool) = id(hal).target_temperature_high;  // Save valid current temp setting
+              id(set_target_temperature)->execute(${max_thermostat_temp});
+            }
+          }
+          
+  - platform: template
+    id: cool_on_3
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Cool On 3
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 22
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_COOL) {  // Only for Cooling mode
+            if(!(id(cool_off_3).hour == id(cool_on_3).hour && id(cool_off_3).minute == id(cool_on_3).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule3";
+              ESP_LOGI(TAG, "cool_on");
+              id(set_target_temperature)->execute(id(last_target_temp_cool));
+            }
+          }
+          
+  - platform: template
+    id: cool_off_4
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Cool Off 4
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 25
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_COOL) {  // Only for Cooling mode
+            if(!(id(cool_off_4).hour == id(cool_on_4).hour && id(cool_off_4).minute == id(cool_on_4).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule4";
+              ESP_LOGI(TAG, "cool_off");
+              if(id(hal).target_temperature_high != ${max_thermostat_temp})
+                id(last_target_temp_cool) = id(hal).target_temperature_high;  // Save valid current temp setting
+              id(set_target_temperature)->execute(${max_thermostat_temp});
+            }
+          }
+
+  - platform: template
+    id: cool_on_4
+    type: time
+    time_id: pcf85063_time # Use RTC
+    name: Cool On 4
+    optimistic: yes
+    initial_value: "12:00"
+    restore_value: true
+    web_server:
+      sorting_weight: 24
+    on_time:
+      - lambda: |-
+          if(id(hal).mode == CLIMATE_MODE_COOL) {  // Only for Cooling mode
+            if(!(id(cool_off_4).hour == id(cool_on_4).hour && id(cool_off_4).minute == id(cool_on_4).minute)) {  // Ignore if on/off times are the same
+              static const char* TAG = "Schedule4";
+              ESP_LOGI(TAG, "cool_on");
+              id(set_target_temperature)->execute(id(last_target_temp_cool));
+            }
+          }
+      

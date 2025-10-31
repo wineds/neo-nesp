@@ -1,34 +1,15 @@
 substitutions:
-  friendly_name: 'NESP'
-  hostname: 'neo-nesp'
-  device_name: 'neo_nesp'
-  device_description: 'WT32S3-21S ZX2D10GE01R-V4848 rotary switch screen'
-  ip: 10.0.80.75
-
-  # Home Assistant entities you want to control with nESP
+  friendly_name: 'HAL 9000'
+  hostname: 'hal9000'
+  device_name: 'HAL 9000'
+  device_description: 'waveshare-esp32-s3-touch-lcd-2.1' 
+  #ip: 10.0.80.75
+  min_thermostat_temp: 13.0
+  max_thermostat_temp: 30.0
+  # Home Assistant entities you want to control with HAL9000
   climate_entity: climate.climate_control
-  zone_1_entity: cover.zone_1_downstairs
-  zone_2_entity: cover.zone_2_upstairs
-
-  # Home Assistant weather/info entities
-  weather_entity: weather.bom_melbourne
-  weather_feels_like_entity: sensor.bom_melbourne_temp_feels_like
-  weather_high_entity: sensor.bom_melbourne_temp_max_0
-  weather_low_entity: sensor.bom_melbourne_temp_min_0
-  weather_rain_chance_entity: sensor.bom_melbourne_rain_chance_0
-  zone_1_temperature_entity: sensor.xiaomi_temp_1_temperature
-  zone_1_humidity_entity: sensor.xiaomi_temp_1_humidity
-  zone_2_temperature_entity: sensor.xiaomi_temp_2_temperature
-  zone_2_humidity_entity: sensor.xiaomi_temp_2_humidity
-
-external_components:
-  - source: github://pr#7472
-    components: [ lvgl ]
-  - source:
-      type: git
-      url: https://github.com/esphome/esphome
-      ref: dev
-    components: [ st7701s ]
+  time_zone: 'Australia/Melbourne'
+  default_brightness: 0.29  # conservative brightness
 
 esphome:
   name: ${hostname}
@@ -39,66 +20,213 @@ esphome:
     board_build.flash_mode: dio
     board_build.arduino.memory_type: qio_opi
   on_boot:
+    - lambda: id(hal).set_supports_heat_cool(false);  # disable heat/cool for this use case.
     - light.turn_on:
         id: backlight
-        brightness: 0.7
+        brightness: ${default_brightness} #0.5
+    - pcf85063.read_time:
+
 esp32:
   board: esp32-s3-devkitc-1
-  flash_size: 16MB
+  flash_size: 8MB
+  variant: esp32s3
   framework:
     type: esp-idf
-    version: 5.3.1
-    platform_version: 6.8.1
     sdkconfig_options:
-      CONFIG_ESPTOOLPY_FLASHSIZE_16MB: y
-      CONFIG_ESP32S3_DEFAULT_CPU_FREQ_240: y
-      CONFIG_ESP32S3_DATA_CACHE_64KB: y
-      CONFIG_SPIRAM_FETCH_INSTRUCTIONS: y
-      CONFIG_SPIRAM_RODATA: y
+      CONFIG_ESPTOOLPY_FLASHFREQ: "80MHz" # this is needed for flashing
+      CONFIG_ESPTOOLPY_FLASHMODE_QIO: y
+      CONFIG_FLASHMODE_QIO: y
+      CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ_240: y
+      CONFIG_ESP_DEFAULT_CPU_FREQ_MHZ: '240'
+      CONFIG_SPIRAM_RODATA: "y"
+      CONFIG_COMPILER_OPTIMIZATION : performance
+      CONFIG_LWIP_MAX_SOCKETS: "20"
+
 psram:
   mode: octal
   speed: 80MHz
+  
+# I2C bus configuration
+i2c:
+  - id: i2c_bus
+    sda: GPIO15
+    scl: GPIO07
+    frequency: 200kHz #400kHz #300kHz  # conservative as cable is 3m long
+
+# PCA9554 GPIO extender for display reset
+pca9554:
+  - id: p_c_a
+    address: 0x20
+    i2c_id: i2c_bus
+  - id: pca9535_device  # Relay board
+    address: 0x24
+    pin_count: 16
 
 debug:
   update_interval: 60s
 
 <<: !include _common.yaml
 
+# Buzzer, Backlight PWM output and light component
 output:
-  ### DISPLAY BACKLIGHT
+    # Backlight LED
   - platform: ledc
-    id: display_led
-    pin: 38
-    zero_means_zero: true
+    pin: GPIO06
+    id: display_led   #GPIO06  #
+    frequency: 2000Hz
+    channel: 0
 
 light:
   - platform: monochromatic
-    id: backlight
-    output: display_led
+    output: display_led 
     name: Backlight
+    id: backlight
+    internal: true # adjusting slider kills time out functionality so hide from UI.
+    restore_mode: ALWAYS_ON
     icon: mdi:brightness-percent
     default_transition_length: 500ms
-    restore_mode: ALWAYS_ON
+    gamma_correct: 1
 
-  ### RGB RING LIGHT
-  - platform: esp32_rmt_led_strip
-    name: RGB LED
-    id: rgb_ring
-    pin: 4
-    num_leds: 13
-    rmt_channel: 0
-    rgb_order: GRB
-    chipset: WS2812
+# Example dual-point configuration entry 
+climate:
+  - platform: thermostat
+    name: "Thermostat Climate Controller"
+    id: hal
+    sensor: room_temperature
+    humidity_sensor: room_humidity
+    visual:
+      temperature_step: 0.5 °C
+      min_temperature: ${min_thermostat_temp} #13.0 # °C
+      max_temperature: ${max_thermostat_temp} #30.0 # °C
+            
+    min_heating_off_time: 180s #30s #300s
+    min_heating_run_time: 180s #30s #300s
+    min_cooling_off_time: 180s #30s #300s
+    min_cooling_run_time: 180s #30s #300s
+    min_fanning_off_time: 180s #30s #300s
+    min_fanning_run_time: 180s #30s #300s
+    min_idle_time: 30s
+    heat_deadband: 0.5 
+    heat_overrun: 0.5
+    target_temperature_change_action:
+      - lambda: |-
+         if(!isnan(id(hal).current_temperature)) id(update_roller_needle_and_arc).execute();
 
+    cool_action:
+      - lambda: ESP_LOGD("cool_action!", "");
+      - switch.turn_on: cool 
+      - switch.turn_on: fan
+      - switch.turn_off: heat
+      - lambda: |- 
+          id(set_mode_cool).execute();
+    heat_action:
+      - lambda: ESP_LOGD("heat_action!", "");
+      - switch.turn_on: heat
+      - switch.turn_off: cool 
+      - switch.turn_off: fan  # Heater auto activates fan
+      - lambda: |-
+          id(set_mode_heat).execute();
+    idle_action:
+      - lambda: ESP_LOGD("idle_action!", "");
+      - switch.turn_off: heat
+      - switch.turn_off: cool
+      - switch.turn_off: fan
+      - lambda: id(set_mode_idle).execute();
+    fan_only_action:
+      - lambda: ESP_LOGD("fan_action!", "");
+      - switch.turn_on: fan
+      - switch.turn_off: heat
+      - switch.turn_off: cool 
+      - lambda: id(set_mode_fan).execute();
+    off_mode:
+      - lambda: ESP_LOGD("off_action!", "");
+      - switch.turn_off: heat
+      - switch.turn_off: cool
+      - switch.turn_off: fan
+      - lambda: id(set_mode_off).execute();
+#    on_control:
+#      - logger.log: "Control input received; configuration updated!" 
+#
+#  Catch all for HA actions.
+#
+    on_state:
+      #- logger.log: "State updated!"
+      #- lambda: ESP_LOGD("on_state!", ""); 
+      - lambda: |-
+          if (x.mode == CLIMATE_MODE_HEAT) {
+            //ESP_LOGD("on_state_heat!", "");
+              if(id(hal).target_temperature_high != ${max_thermostat_temp})
+                id(hal).target_temperature_high = ${max_thermostat_temp};  // Set not applicable setpoint to max
+              id(set_mode_heat).execute();
+          }
+          if (x.mode == CLIMATE_MODE_COOL) {
+            //ESP_LOGD("on_state_cool!", "");
+            if(id(hal).target_temperature_low != ${min_thermostat_temp})
+              id(hal).target_temperature_low = ${min_thermostat_temp};   // Set not applicable setpoint to min
+            id(set_mode_cool).execute();
+          }
+          if (x.mode == CLIMATE_MODE_FAN_ONLY) {
+            //ESP_LOGD("on_state_fan!", "");
+            id(set_mode_fan).execute();
+          }
+          if(id(hal).action == CLIMATE_ACTION_OFF && id(hal).mode == CLIMATE_MODE_OFF)
+            id(set_mode_off).execute(); 
+             
+    default_preset: Home
+    preset:
+      - name: Home
+        default_target_temperature_low: 20 °C
+        default_target_temperature_high: 22 °C  
+        
 switch:
-  ### VIBRATION MOTOR
+# Buzzer
   - platform: gpio
-    id: vibration
-    name: Vibration Motor
-    icon: mdi:vibrate
+    pin:
+      pca9554: p_c_a
+      number: 7
+    id: buzzer
+    name: "Buzzer"
     internal: true
-    pin: 7
-
+    on_turn_on:
+    - delay: 50ms
+    - switch.turn_off: buzzer
+# Relays
+  - platform: gpio
+    name: "Pin #A0 Heat"
+    id: heat
+    pin:
+      pca9554: pca9535_device
+      number: 0
+      mode:
+        output: true
+      inverted: false
+  - platform: gpio
+    name: "Pin #A1 Cool"
+    id: cool
+    pin:
+      pca9554: pca9535_device
+      number: 1
+      mode:
+        output: true
+      inverted: false
+  - platform: gpio
+    name: "Pin #A2 Fan"
+    id: fan
+    pin:
+      pca9554: pca9535_device
+      number: 2
+      mode:
+        output: true
+      inverted: false
+  - platform: gpio
+    name: "Pin #A3 Spare"
+    id: spare
+    pin:
+      pca9554: pca9535_device
+      number: 3
+      mode:
+        output: true
+      inverted: false     
   ### DISPLAY ANTI BURN-IN
   - platform: template
     name: Antiburn
@@ -126,15 +254,36 @@ switch:
             - lvgl.widget.redraw:
             - delay: 1s
             - lvgl.pause:
-      - light.turn_on: backlight
-
+      
 time:
-  - platform: homeassistant
-    id: hass_time
+  - platform: sntp
+    id: sntp_time
+    timezone: ${time_zone} #"Australia/Melbourne"
+    on_time_sync:
+     # ... and update the RTC when the synchronization was successful
+     - pcf85063.write_time: 
+     
+  - platform: pcf85063
+    id: pcf85063_time
+    update_interval: never
     on_time:
-      - seconds: 0
+      #- seconds: /5 #0 #/5 #0
+      - seconds: /60 #0 #/5 #0
         then:
-          - script.execute: update_menu_date_label
+          - lambda: |-
+              //static const char* TAG = "Temps";
+              //ESP_LOGI(TAG, "target: %.1f target_low: %.1f target_high: %.1f h: %.1f c: %.1f", id(hal).target_temperature, id(hal).target_temperature_low, id(hal).target_temperature_high, id(my_target_temp_heat), id(my_target_temp_cool));
+              //ESP_LOGI(TAG, "target: %.1f target_low: %.1f target_high: %.1f", id(hal).target_temperature, id(hal).target_temperature_low, id(hal).target_temperature_high);
+              static const char* TAG_SNTP = "SNTP Time";
+              static char time_str[30];
+              time_t now = id(sntp_time).now().timestamp;
+              strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", localtime(&now));
+              ESP_LOGI(TAG_SNTP, "%s", time_str);
+              static const char* TAG_RTC = "RTC Time";
+              now = id(pcf85063_time).now().timestamp;
+              strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", localtime(&now));
+              ESP_LOGI(TAG_RTC, "%s", time_str);
+              
       - hours: 2,3,4,5
         minutes: 5
         seconds: 0
@@ -146,38 +295,6 @@ time:
         then:
           - switch.turn_off: switch_antiburn
 
-binary_sensor:
-  ### CENTRE PUSH BUTTON
-  - platform: gpio
-    name: Button
-    id: push_button
-    icon: mdi:circle-outline
-    internal: true
-    pin:
-      number: 3
-      mode: INPUT
-      inverted: true
-      ignore_strapping_warning: true
-    on_press: 
-      # - script.execute:
-      #     id: vibrate
-      #     length_ms: 10
-      - light.turn_on: backlight
-      - if:
-          condition: lvgl.is_paused
-          then:
-            - lvgl.resume:
-            - lvgl.widget.redraw:
-      - if:
-          condition:
-            # only when on the main page
-            lambda: 'return strcmp(id(active_lvgl_page).c_str(), "main_page") == 0;'
-          then:
-            - script.execute: goto_menu_page
-
-  - platform: status
-    name: Status
-
 button:
 - platform: restart
   name: Restart
@@ -188,431 +305,133 @@ sensor:
     name: Uptime
     disabled_by_default: True
 
-  ### ROTARY ENCODER
-  - platform: rotary_encoder
-    name: Rotary Encoder
-    id: rotary
-    icon: mdi:cached
-    internal: true
-    pin_a:
-      number: 6
-      inverted: true
-      mode: INPUT
-    pin_b:
-      number: 5
-      inverted: true
-      mode: INPUT
-    on_value:
-      - light.turn_on: backlight
-      - if:
-          condition:
-            # turn ON when when on main page and OFF
-            lambda: 'return strcmp(id(active_lvgl_page).c_str(), "main_page") == 0 && strcmp(id(hvac_mode).state.c_str(), "off") == 0;'
-          then:
-            - homeassistant.action:
-                action: climate.turn_on
-                data:
-                  entity_id: ${climate_entity}
-      - if:
-          condition: lvgl.is_paused
-          then:
-            - lvgl.resume:
-            - lvgl.widget.redraw:
-    on_clockwise:
-      - if:
-          condition:
-            # set temp++ when on main page and not OFF or FAN
-            lambda: 'return strcmp(id(active_lvgl_page).c_str(), "main_page") == 0 && strcmp(id(hvac_mode).state.c_str(), "off") != 0 && strcmp(id(hvac_mode).state.c_str(), "fan_only") != 0;'
-          then:
-            - homeassistant.action:
-                action: climate.set_temperature
-                data:
-                  entity_id: ${climate_entity}
-                  temperature: !lambda return id(set_temperature).state + 0.5;
-    on_anticlockwise:
-      - if:
-          condition:
-            # set temp-- when on main page and not OFF or FAN
-            lambda: 'return strcmp(id(active_lvgl_page).c_str(), "main_page") == 0 && strcmp(id(hvac_mode).state.c_str(), "off") != 0 && strcmp(id(hvac_mode).state.c_str(), "fan_only") != 0;'
-          then:
-            - homeassistant.action:
-                action: climate.set_temperature
-                data:
-                  entity_id: ${climate_entity}
-                  temperature: !lambda return id(set_temperature).state - 0.5;
-
-  ### HASS - HVAC SET TEMP
-  - platform: homeassistant
-    entity_id: ${climate_entity}
-    id: set_temperature
-    attribute: temperature
-    internal: true
-    on_value:
-      - lvgl.indicator.update:
-          id: set_temp_needle
-          value: !lambda return x * 10;
-      - lvgl.indicator.update:
-          id: diff_temp_arc
-          start_value: !lambda |-
-            return id(set_temperature).state < id(current_temperature).state ? id(set_temperature).state * 10 : id(current_temperature).state * 10;
-          end_value: !lambda |-
-            return id(set_temperature).state < id(current_temperature).state ? id(current_temperature).state * 10 : id(set_temperature).state * 10;
-      - lvgl.roller.update:
-          id: set_temp_roller
-          selected_index: !lambda return 2 * (x - 16);  # returns index of roller value
-
-  ### HASS - HVAC CURRENT TEMP
-  - platform: homeassistant
-    entity_id: ${climate_entity}
-    id: current_temperature
-    attribute: current_temperature
-    internal: true
-    on_value:
-      - lvgl.arc.update:
-          id: current_temp_arc
-          value: !lambda return x * 10;
-      - lvgl.indicator.update:
-          id: diff_temp_arc
-          start_value: !lambda |-
-            return id(set_temperature).state < id(current_temperature).state ? id(set_temperature).state * 10 : id(current_temperature).state * 10;
-          end_value: !lambda |-
-            return id(set_temperature).state < id(current_temperature).state ? id(current_temperature).state * 10 : id(set_temperature).state * 10;
-      - lvgl.label.update:
-          id: current_temp_label
-          text:
-            format: "%.1f°C"
-            args: [ 'round(x * 10) / 10' ]
-
-  ### HASS - HVAC CURRENT HUMIDITY
-  - platform: homeassistant
-    entity_id: ${climate_entity}
-    id: current_humidity
-    attribute: current_humidity
-    internal: true
-
-  ### HASS - BoM temperature
-  - platform: homeassistant
-    entity_id: ${weather_entity}
-    id: bom_temp
-    attribute: temperature
-    internal: true
-    on_value:
-      - lvgl.label.update:
-          id: weather_temp_label
-          text:
-            format: "%.0f°C"
-            args: [ 'round(x)' ]
-      - lvgl.label.update:
-          id: menu_weather_label
-          text: 
-            format: "%.0f°C"
-            args: [ 'round(id(bom_temp).state)']
-
-  ### HASS - BoM feels like temperature
-  - platform: homeassistant
-    entity_id: ${weather_feels_like_entity}
-    id: bom_feels_like
-    internal: true
-    on_value:
-      - lvgl.label.update:
-          id: weather_feels_like_label
-          text:
-            format: "Feels like %.0f°C"
-            args: [ 'round(x)' ]
-
-  ### HASS - BoM forecast high temp
-  - platform: homeassistant
-    entity_id: ${weather_high_entity}
-    id: bom_high_temp
-    internal: true
-    on_value:
-      - script.execute: update_weather_forecast_label
-
-  ### HASS - BoM forecast low temp
-  - platform: homeassistant
-    entity_id: ${weather_low_entity}
-    id: bom_low_temp
-    internal: true
-    on_value:
-      - script.execute: update_weather_forecast_label
-
-  ### HASS - BoM forecast rain change
-  - platform: homeassistant
-    entity_id: ${weather_rain_chance_entity}
-    id: bom_rain_chance
-    internal: true
-    on_value:
-      - script.execute: update_weather_forecast_label
-
-  ### HASS - Zone 1 temperature
-  - platform: homeassistant
-    entity_id: ${zone_1_temperature_entity}
-    id: zone_1_temp
-    internal: true
-    on_value:
-      - script.execute: update_menu_zone_temp_label
-
-  ### HASS - Zone 1 humidity
-  - platform: homeassistant
-    entity_id: ${zone_1_humidity_entity}
-    id: zone_1_humidity
-    internal: true
-    on_value:
-      - script.execute: update_menu_zone_temp_label
-
-  ### HASS - Zone 2 temperature
-  - platform: homeassistant
-    entity_id: ${zone_2_temperature_entity}
-    id: zone_2_temp
-    internal: true
-    on_value:
-      - script.execute: update_menu_zone_temp_label
-
-  ### HASS - Zone 2 humidity
-  - platform: homeassistant
-    entity_id: ${zone_2_humidity_entity}
-    id: zone_2_humidity
-    internal: true
-    on_value:
-      - script.execute: update_menu_zone_temp_label
-
+  - platform: htu31d 
+    update_interval: 15s #10s #20s # How often to update the sensor readings
+    temperature:
+      name: "Room Temperature"
+      id: room_temperature
+      unit_of_measurement: "°C"
+      accuracy_decimals: 1
+      filters:
+        - filter_out: nan
+      on_value:
+        then:
+          - script.execute: update_menu_temp_label
+          - lambda: if(!isnan(id(hal).current_temperature)) id(update_roller_needle_and_arc).execute();
+#          - lambda: |
+#              if(id(room_temperature).is_heater_enabled()) 
+#                ESP_LOGD("heater on!", "");
+#              else
+#                ESP_LOGD("heater off!", "");
+              
+    humidity:
+      name: "Room Humidity"
+      id: room_humidity
+      unit_of_measurement: "%"
+      accuracy_decimals: 1
+      filters:
+        - filter_out: nan
+   
 text_sensor:
-  ### HASS - HVAC MODE
-  - platform: homeassistant
-    entity_id: ${climate_entity}
-    id: hvac_mode
-    internal: true
-    on_value:
-      - lambda: |-
-          if (x.compare("off") == 0) {
-            id(set_mode_off).execute();
-          } else if (x.compare("heat") == 0) {
-            id(set_mode_heat).execute();
-          } else if (x.compare("cool") == 0) {
-            id(set_mode_cool).execute();
-          } else if (x.compare("fan_only") == 0) {
-            id(set_mode_fan).execute();
-          } else if (x.compare("dry") == 0) {
-            id(set_mode_dry).execute();
-          } else if (x.compare("heat_cool") == 0) {
-            id(set_mode_heat_cool).execute();
-          }
-
-  ### HASS - HVAC FAN SPEED
-  - platform: homeassistant
-    entity_id: ${climate_entity}
-    id: fan_mode
-    attribute: fan_mode
-    internal: true
-    on_value:
-      - lambda: |-
-          if (x.compare("auto") == 0) {
-            id(set_fan_auto).execute();
-          } else if (x.compare("low") == 0) {
-            id(set_fan_low).execute();
-          } else if (x.compare("medium") == 0) {
-            id(set_fan_medium).execute();
-          } else if (x.compare("high") == 0) {
-            id(set_fan_high).execute();
-          }
-
-  ### HASS - HVAC PRESET
-  - platform: homeassistant
-    entity_id: ${climate_entity}
-    id: preset_mode
-    attribute: preset_mode
-    internal: true
-    on_value:
-      - lambda: |-
-          if (x.compare("none") == 0) {
-            id(set_preset_none).execute();
-          } else if (x.compare("eco") == 0) {
-            id(set_preset_eco).execute();
-          } else if (x.compare("comfort") == 0) {
-            id(set_preset_comfort).execute();
-          } else if (x.compare("boost") == 0) {
-            id(set_preset_boost).execute();
-          }
-
-    ### HASS - ZONES
-  - platform: homeassistant
-    entity_id: ${zone_1_entity}
-    id: zone_1
-    internal: true
-    on_value:
-      - lambda: |-
-          if (x.compare("open") == 0) {
-            id(set_zone_1).execute();
-          } else if (x.compare("closed") == 0) {
-            id(unset_zone_1).execute();
-          }
-  - platform: homeassistant
-    entity_id: ${zone_2_entity}
-    id: zone_2
-    internal: true
-    on_value:
-      - lambda: |-
-          if (x.compare("open") == 0) {
-            id(set_zone_2).execute();
-          } else if (x.compare("closed") == 0) {
-            id(unset_zone_2).execute();
-          }
-
-  ### HASS - BoM weather
-  - platform: homeassistant
-    entity_id: ${weather_entity}
-    id: bom_weather
-    internal: true
-
-  ### HASS - BoM icon
-  - platform: homeassistant
-    entity_id: ${weather_entity}
-    id: bom_icon
-    attribute: icon
-    internal: true
-    on_value:
-      - lvgl.label.update:
-          id: weather_icon_label
-          text: !lambda |-
-            if (x.compare("mdi:weather-night") == 0) {
-              return "\U000F0594";
-            } else if (x.compare("mdi:weather-cloudy") == 0) {
-              return "\U000F0590";
-            } else if (x.compare("mdi:weather-hurricane") == 0) {
-              return "\U000F0898";
-            } else if (x.compare("mdi:weather-hazy") == 0) {
-              return "\U000F0F30";
-            } else if (x.compare("mdi:weather-fog") == 0) {
-              return "\U000F0F91";
-            } else if (x.compare("mdi:snowflake-melt") == 0) {
-              return "\U000F12CB";
-            } else if (x.compare("mdi:weather-pouring") == 0) {
-              return "\U000F0596";
-            } else if (x.compare("mdi:weather-partly-rainy") == 0) {
-              return "\U000F0F33";
-            } else if (x.compare("mdi:weather-light-showers") == 0) {
-              return "\U000F0F33";    // mdi:partly-rainy, mdi:light-showers doesn't exist?
-            } else if (x.compare("mdi:weather-sunny") == 0) {
-              return "\U000F0599";
-            } else if (x.compare("mdi:weather-partly-cloudy") == 0) {
-              return "\U000F0595";
-            } else if (x.compare("mdi:weather-rainy") == 0) {
-              return "\U000F0597";
-            } else if (x.compare("mdi:weather-snowy") == 0) {
-              return "\U000F0598";
-            } else if (x.compare("mdi:weather-lightning") == 0) {
-              return "\U000F0593";    // not in BoM integration code last time I checked
-            } else if (x.compare("mdi:weather-lightning-rainy") == 0) {
-              return "\U000F0593";    // override with mdi:lightning
-            } else if (x.compare("mdi:weather-windy") == 0) {
-              return "\U000F059D";
-            } else if (x.compare("mdi:weather-hail") == 0) {
-              return "\U000F0592";    // not in BoM integration code last time I checked
-            } else {
-              return "";
-            }
-      - lvgl.label.update:
-          id: menu_weather_icon_label
-          text: !lambda |-
-            if (x.compare("mdi:weather-night") == 0) {
-              return "\U000F0594";
-            } else if (x.compare("mdi:weather-cloudy") == 0) {
-              return "\U000F0590";
-            } else if (x.compare("mdi:weather-hurricane") == 0) {
-              return "\U000F0898";
-            } else if (x.compare("mdi:weather-hazy") == 0) {
-              return "\U000F0F30";
-            } else if (x.compare("mdi:weather-fog") == 0) {
-              return "\U000F0F91";
-            } else if (x.compare("mdi:snowflake-melt") == 0) {
-              return "\U000F12CB";
-            } else if (x.compare("mdi:weather-pouring") == 0) {
-              return "\U000F0596";
-            } else if (x.compare("mdi:weather-partly-rainy") == 0) {
-              return "\U000F0F33";
-            } else if (x.compare("mdi:weather-light-showers") == 0) {
-              return "\U000F0F33";    // mdi:partly-rainy, mdi:light-showers doesn't exist?
-            } else if (x.compare("mdi:weather-sunny") == 0) {
-              return "\U000F0599";
-            } else if (x.compare("mdi:weather-partly-cloudy") == 0) {
-              return "\U000F0595";
-            } else if (x.compare("mdi:weather-rainy") == 0) {
-              return "\U000F0597";
-            } else if (x.compare("mdi:weather-snowy") == 0) {
-              return "\U000F0598";
-            } else if (x.compare("mdi:weather-lightning") == 0) {
-              return "\U000F0593";    // not in BoM integration code last time I checked
-            } else if (x.compare("mdi:weather-lightning-rainy") == 0) {
-              return "\U000F0593";    // override with mdi:lightning
-            } else if (x.compare("mdi:weather-windy") == 0) {
-              return "\U000F059D";
-            } else if (x.compare("mdi:weather-hail") == 0) {
-              return "\U000F0592";    // not in BoM integration code last time I checked
-            } else {
-              return "";
-            }
+#  - platform: template
+#    id: current_time_sensor
+#    name: "Current SNTP Time"
+#    internal: true
+#    lambda: |
+#      static char time_str[30];
+#      time_t now = id(sntp_time).now().timestamp;
+#      strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", localtime(&now));
+#      return (std::string) time_str;
+#    update_interval: never # 60s # Update the sensor every 60 seconds
+#    
+#  - platform: template
+#    id: current_RTC_time_sensor
+#    name: "Current RTC Time"
+#    internal: true
+#    lambda: |
+#      static char time_str[30];
+#      time_t now = id(pcf85063_time).now().timestamp;
+#      strftime(time_str, sizeof(time_str), "%Y-%m-%d %H:%M:%S", localtime(&now));
+#      return (std::string) time_str;
+#    update_interval: never #60s # Update the sensor every 60 seconds
+          
+############  Debugging...
+  - platform: template
+    id: temp_heat
+    name: "Last Heat Temp"
+    lambda: |
+      return str_sprintf("%.1f", id(last_target_temp_heat));
+    update_interval: 60s # Update the sensor every 60 seconds 
+    
+  - platform: template
+    id: temp_cool
+    name: "Last Cool Temp"
+    lambda: |
+      return str_sprintf("%.1f", id(last_target_temp_cool));
+    update_interval: 60s # Update the sensor every 60 seconds       
 
   - platform: debug
     reset_reason:
       name: Reset Reason
       disabled_by_default: True
 
+# SPI bus configuration
 spi:
-  ### DISPLAY
-  clk_pin:
-    number: 47
-    allow_other_uses: true
-  mosi_pin:
-    number: 41
-    allow_other_uses: true
+  - id: spi_lcd
+    clk_pin: GPIO02
+    mosi_pin: GPIO01
+    interface: spi3
+
 display:
   - platform: st7701s
     id: screen
     spi_mode: MODE0
-    data_rate: 10MHz
+    data_rate: 40Mhz #10MHz # 40Mhz
     color_order: RGB
     auto_clear_enabled: false
     update_interval: never
     dimensions:
       width: 480
       height: 480
-    cs_pin: 21
-    de_pin: 39
-    vsync_pin: 48
-    hsync_pin: 40
-    pclk_pin:
-      number: 45
-      ignore_strapping_warning: true
-    pclk_frequency: 15MHz
+    cs_pin:
+      pca9554: p_c_a
+      number: 2
+    reset_pin:
+      pca9554: p_c_a
+      number: 0
+    de_pin: GPIO40
+    hsync_pin: GPIO38
+    vsync_pin: GPIO39
+    pclk_pin: GPIO41
+    #ignore_strapping_warning: true
+    pclk_frequency: 16Mhz #15Mhz #30MHz  VERY Important to set to 16Mhz otherwise get tearing.
     pclk_inverted: false
-    hsync_pulse_width: 10
+    hsync_pulse_width: 8 #10
     hsync_back_porch:  10
-    hsync_front_porch: 10
-    vsync_pulse_width:  2
-    vsync_back_porch:  12
-    vsync_front_porch: 14
+    hsync_front_porch: 50 #10 
+    vsync_pulse_width:  3 #2
+    vsync_back_porch:  8 #12
+    vsync_front_porch: 8 #14
     data_pins:
-      blue:
-        - number: 47                # LCD_D0  = b0
-          allow_other_uses: true
-        - number: 41                # LCD_D1  = b1
-          allow_other_uses: true
-        - 0                         # LCD_D2  = b2
-        - 42                        # LCD_D3  = b3
-        - 14                        # LCD_D4  = b4
-      green:
-        - 8                         # LCD_D5  = g0
-        - 13                        # LCD_D6  = g1
-        - 18                        # LCD_D7  = g2
-        - 12                        # LCD_D8  = g3
-        - 11                        # LCD_D9  = g4
-        - 17                        # LCD_D10 = g5
       red:
-        - 10                        # LCD_D11 = r0
-        - 16                        # LCD_D12 = r1
-        - 9                         # LCD_D13 = r2
-        - 15                        # LCD_D14 = r3
-        - 46                        # LCD_D15 = r4
+        - 46       #r1
+        - 3        #r2
+        - 8        #r3
+        - 18       #r4
+        - 17       #r5
+      green:
+        - 14       #g0
+        - 13       #g1
+        - 12       #g2
+        - 11       #g3
+        - 10       #g4
+        - 9        #g5
+      blue:
+        - 5        #b1
+        - 45       #b2
+        - 48       #b3
+        - 47       #b4
+        - 21       #b5
     init_sequence:
       # Reference: wireless-tag sample code: 
       # https://github.com/wireless-tag-com/ZX2D10GE01R-V4848/blob/master/main/screen.c
@@ -660,5 +479,75 @@ display:
       # - delay 20ms
       #
 
+# CST820 Touchscreen Controller
+touchscreen:
+  - platform: cst816
+    calibration:
+      x_min: 0
+      x_max: 430  # touchscreen is non linear on LHS!  This is the best compromise for my device.
+      y_min: 0
+      y_max: 480
+    id: my_touchscreen
+    i2c_id: i2c_bus
+    reset_pin:
+      pca9554: p_c_a
+      number: 1
+    interrupt_pin: GPIO16
+#    on_update:
+#      - lambda: |-
+#            for (auto touch: touches)  {
+#                if (touch.state <= 2) {
+#                  ESP_LOGI("Touch points:", "id=%d x=%d, y=%d", touch.id, touch.x, touch.y);
+#                }
+#            }
+
+    on_release:
+      - if:
+          condition: lvgl.is_paused
+          then:
+            - logger.log: "LVGL resuming"
+            - lvgl.resume:
+            - lvgl.widget.redraw:
+            - light.turn_on: 
+                id: backlight
+                brightness: ${default_brightness} #50%
+                
+#    on_touch:
+#     - lambda: |-
+#          ESP_LOGI("cal", "x=%d, y=%d, x_raw=%d, y_raw=%0d",
+#              touch.x,
+#              touch.y,
+#              touch.x_raw,
+#              touch.y_raw
+#              );  
+
+number:
+  - platform: template
+    name: LVGL Screen timeout
+    optimistic: true
+    id: display_timeout
+    unit_of_measurement: "s"
+    initial_value: 45
+    restore_value: true
+    min_value: 10
+    max_value: 180
+    step: 5
+    mode: box
+
+
+    
 <<: !include _neo-nesp_UI.yaml
+<<: !include schedule.yaml
+# Only include binary_sensors.yaml if you need to correct touchscreen
+# non-linearities.
+<<: !include binary_sensors.yaml  
+
+
+      
+
+
+      
+
+
+
 

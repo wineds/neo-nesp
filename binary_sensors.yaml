@@ -1,0 +1,102 @@
+# Touchscreen is non-linear near edges so correct with binary_sensors
+# You can delete these binary_sensors or not include this file 
+# if you touchscreen is linear! Use a sharp finger or stylus to get real
+# button coordintates by uncommenting this block in neo-nesp.yaml:
+#    on_touch:
+#     - lambda: |-
+#          ESP_LOGI("cal", "x=%d, y=%d, x_raw=%d, y_raw=%0d",
+#              touch.x,
+#              touch.y,
+#              touch.x_raw,
+#              touch.y_raw
+#              );  
+
+binary_sensor:
+  - platform: touchscreen
+    name: minus
+    #x=116, y=436
+    #x=104, y=433
+    #x=104, y=437
+    #x=103, y=433
+    #x=113, y=433 
+    #av x=108, y=434 
+    x_min: 88 #98
+    x_max: 128 #118
+    y_min: 414 #424
+    y_max: 454 #444
+    use_raw: false #true
+    internal: true 
+    on_press:
+      - lambda: |-
+          if(strcmp(id(active_lvgl_page).c_str(), "main_page") == 0) {
+            id(buzzer).turn_on();
+            id(increment_temperature)->execute(-0.5);
+            //ESP_LOGI("minus! %s", "1");  
+          }
+          
+  - platform: touchscreen
+    name: plus
+#    x=370, y=433
+#    x=388, y=435, 
+#    x=382, y=445, 
+#    x=389, y=440, 
+#    x=381, y=444, 
+#    x=383, y=431,
+#    av x=382, y =438 
+    x_min: 362 #345 #355
+    x_max: 402 #365 #375
+    y_min: 418 #422 #432
+    y_max: 458 #462 #452
+    use_raw: false #true
+    internal: true 
+    on_press:
+      - lambda: |-
+          if(strcmp(id(active_lvgl_page).c_str(), "main_page") == 0) {
+            id(buzzer).turn_on();
+            id(increment_temperature)->execute(0.5);
+            //ESP_LOGI("minus! %s", "1");  
+          }
+          
+  - platform: touchscreen
+    name: menu_page_back
+    #x=470, y=168
+    #x=474, y=158
+    #x=466, y=164
+    #x=466, y=168
+    #x=464, y=169
+    #av x=468, y=165 
+    x_min: 448 
+    x_max: 488
+    y_min: 145
+    y_max: 185
+    use_raw: false #true 
+    internal: true
+    on_press:
+      - lambda: |-
+          if(strcmp(id(active_lvgl_page).c_str(), "menu_page") == 0) {
+            id(buzzer).turn_on();
+            id(goto_main_page)->execute();
+            //ESP_LOGI("menu_page back! %s", "1");
+          }              
+          
+  - platform: touchscreen
+    name: mode_back_button
+    #x=382, y=93
+    #x=376, y=83
+    #x=371, y=90
+    #x=373, y=98
+    #x=377, y=79
+    #av x=376, y=89 
+    x_min: 356 
+    x_max: 396
+    y_min: 69
+    y_max: 109
+    use_raw: false #true 
+    internal: true
+    on_press:
+      - lambda: |-
+          if(strcmp(id(active_lvgl_page).c_str(), "mode_page") == 0) {
+            id(buzzer).turn_on();
+            id(goto_menu_page)->execute();
+            //ESP_LOGI("mode_back_button! %s", "1");
+          }                      
