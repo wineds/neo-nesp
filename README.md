@@ -15,6 +15,7 @@ Hardware device https://www.waveshare.com/esp32-s3-touch-lcd-2.1.htm (I used the
 
 * Removed Zones and weather forecast.
 * Works standalone but can also be controlled by Home Assistant.
+* Supports Heating, Cooling and Fan single speed modes.
 
 ![1](1759221903906.jpg)
 
