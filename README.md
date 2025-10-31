@@ -1,6 +1,6 @@
 # neo-nESP -- Nest Thermostat clone on a Rotary Display running ESPHome
 
-Hardware device (AliExpress): [WT32S3-21S ZX2D10GE01R-V4848 2.1" 480x480 rotary switch screen](https://www.aliexpress.com/item/1005006102533124.html) 
+Hardware device https://www.waveshare.com/esp32-s3-touch-lcd-2.1.htm
 
 > [Discussion on community.home-assistant.io](https://community.home-assistant.io/t/esphome-nest-thermostat-clone-on-cheap-rotary-display/)
 
@@ -9,26 +9,13 @@ Hardware device (AliExpress): [WT32S3-21S ZX2D10GE01R-V4848 2.1" 480x480 rotary 
 
 ## Usage
 
-* Turn rotary knob to adjust set temperature on main screen.
-* Press centre button to bring up menu to control HVAC.
+* Touch screen controlled.
 
 ## Features 
 
-* Ambient display of weather when HVAC is off.
-* Two cover entities for zone support.
+* Removed Zones and weather forecast.
+* Works standalon but can also be controlled by Home Assistant.
 
-Will probably need some modification of the yaml to suit the entities for your Home Assistant install. You can delete the sections not relevant to you (e.g. zoning, weather); unfortunately they might be scattered throughout the code.
-
-
-## Screenshots
-
-![1](static/IMG_3918.jpeg)
-
-![2](static/IMG_3919.jpeg)
-
-![3](static/IMG_3922.jpeg)
-
-![4](static/IMG_3923.jpeg)
 
 
 ## Special Thanks
