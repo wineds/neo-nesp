@@ -1,6 +1,6 @@
 # neo-nESP -- Nest Thermostat clone on a Rotary Display running ESPHome
 
-Hardware device https://www.waveshare.com/esp32-s3-touch-lcd-2.1.htm
+Hardware device https://www.waveshare.com/esp32-s3-touch-lcd-2.1.htm (I used the curved edge version)
 
 > [Discussion on community.home-assistant.io](https://community.home-assistant.io/t/esphome-nest-thermostat-clone-on-cheap-rotary-display/)
 
