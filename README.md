@@ -16,9 +16,12 @@ Hardware device https://www.waveshare.com/esp32-s3-touch-lcd-2.1.htm (I used the
 * Removed Zones and weather forecast.
 * Works standalone but can also be controlled by Home Assistant.
 
-https://github.com/wineds/neo-nesp/blob/main/1759221903906.jpg
-https://github.com/wineds/neo-nesp/blob/main/1759221903917.jpg
-https://github.com/wineds/neo-nesp/blob/main/1759221903929.jpg
+![1](1759221903906.jpg)
+
+![2](1759221903917.jpg)
+
+![3](1759221903929.jpg)
+
 
 ## Special Thanks
 
