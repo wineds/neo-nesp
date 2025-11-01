@@ -8,3 +8,5 @@ NB: I had access to the back of the wall so I used these to secure mount to plas
 https://www.printables.com/model/272115-knurled-m3-m8-thumbscrews
 
 template.stl used as drill and hole cutting guide.
+
+supports required for hal_mount5.stl.  I used organic (tree) supports.
