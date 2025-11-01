@@ -17,6 +17,7 @@ longer I2C cable for sensor : https://core-electronics.com.au/stemma-qt-qwiic-js
 M2 x 8mm bolts : https://www.jaycar.com.au/m2-x-8mm-metric-metal-thread-fasteners/p/HP0390 
 
 
+
 > [Discussion on community.home-assistant.io](https://community.home-assistant.io/t/esphome-nest-thermostat-clone-on-cheap-rotary-display/)
 
 > [Discussion on Discord](https://discord.com/channels/429907082951524364/1275465022654648362)
