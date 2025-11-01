@@ -32,6 +32,7 @@ M2 x 8mm bolts : https://www.jaycar.com.au/m2-x-8mm-metric-metal-thread-fastener
 * Removed Zones and weather forecast.
 * Works standalone but can also be controlled by Home Assistant.
 * Supports Heating, Cooling and Fan single speed modes.
+* Added support for schedules in device webpage
 
 ![1](1759221903906.jpg)
 
