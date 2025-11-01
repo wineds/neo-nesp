@@ -8,11 +8,13 @@ Hardware device https://www.waveshare.com/esp32-s3-touch-lcd-2.1.htm (I used the
 
 I2C 4 relay board : https://www.aliexpress.com/item/1005005888153297.html?spm=a2g0o.order_list.order_list_main.20.21ef1802hpYIvM
 
-I2C temperature and hunidity sensor : https://core-electronics.com.au/adafruit-htu31-temperature-humidity-sensor-breakout-board-stemma-qt-qwiic.html
+I2C temperature and humidity sensor : https://core-electronics.com.au/adafruit-htu31-temperature-humidity-sensor-breakout-board-stemma-qt-qwiic.html
 
 6 core "alarm cable" : https://www.jaycar.com.au/6-core-alarm-cable/p/WB1598 (I used 3m)
 
 longer I2C cable for sensor : https://core-electronics.com.au/stemma-qt-qwiic-jst-sh-4-pin-cable-200mm-long.html
+
+M2 x 8mm bolts : https://www.jaycar.com.au/m2-x-8mm-metric-metal-thread-fasteners/p/HP0390 
 
 
 > [Discussion on community.home-assistant.io](https://community.home-assistant.io/t/esphome-nest-thermostat-clone-on-cheap-rotary-display/)
