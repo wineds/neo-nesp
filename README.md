@@ -6,7 +6,7 @@ Hardware device https://www.waveshare.com/esp32-s3-touch-lcd-2.1.htm (I used the
 
 24 VAC to 5V DC converter : https://www.aliexpress.com/item/4000971746921.html?spm=a2g0o.order_list.order_list_main.15.21ef1802hpYIvM (Type C USB version)
 
-I2C 4 relay board : https://www.aliexpress.com/item/1005005888153297.html?spm=a2g0o.order_list.order_list_main.20.21ef1802hpYIvM
+I2C 4 relay board : https://www.aliexpress.com/item/1005005888153297.html?spm=a2g0o.order_list.order_list_main.20.21ef1802hpYIvM (needs solder bridge on A2 to change I2C address)
 
 I2C temperature and humidity sensor : https://core-electronics.com.au/adafruit-htu31-temperature-humidity-sensor-breakout-board-stemma-qt-qwiic.html
 
