@@ -3,3 +3,5 @@ template.stl used as drill guide for wall
 
 NB: I had access to the back of the wall so I used these to secure mount to plasterboard wall :
 https://www.printables.com/model/272115-knurled-m3-m8-thumbscrews
+
+template.stl used as drill and hole cutting guide.
