@@ -1,4 +1,4 @@
-# neo-nESP -- Nest Thermostat clone on a Rotary Display running ESPHome
+# neo-nESP -- Nest Thermostat clone on a round touch screen Display running ESPHome
 
 Parts:
 
