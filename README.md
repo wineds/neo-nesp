@@ -18,6 +18,8 @@ longer I2C cable for sensor : https://core-electronics.com.au/stemma-qt-qwiic-js
 
 M2 x 8mm bolts : https://www.jaycar.com.au/m2-x-8mm-metric-metal-thread-fasteners/p/HP0390 
 
+I2C daisy chained : Waveshare -> HTU31D -> 4 Relay board
+
 
 
 > [Discussion on community.home-assistant.io](https://community.home-assistant.io/t/esphome-nest-thermostat-clone-on-cheap-rotary-display/)
