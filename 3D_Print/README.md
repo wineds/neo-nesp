@@ -1,6 +1,6 @@
 Voron style heatset inserts are used on mount :  https://cnckitchen.store/products/made-for-voron-gewindeeinsatz-threaded-insert-m3x5x4-100-stk-pcs
 
-M4 short version heatset inserts used ro secure AC/DC converter to control plate : https://cnckitchen.store/products/heat-set-insert-m4-x-4-short-version-100-pieces
+M4 short version heatset inserts used ro secure AC/DC converter to control plate : https://cnckitchen.store/products/heat-set-insert-m4-x-4-short-version-100-pieces  Voron style heatset inserts used to mount the relay board and terminal block.
 
 template.stl used as drill guide for wall
 
